@@ -1,8 +1,8 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.0.2
- * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — neon red, teal icons, yellow categories. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
+ * @version 3.1.0
+ * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
 */
@@ -42,8 +42,8 @@ body {
     --custom-dms-icon: custom; /* off: default discord icon, hide: remove icon, custom: use --dms-icon-svg-url */
     --dms-icon-svg-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm2.2 3.3 1.4-1.4L11.6 12l-4 5.1-1.4-1.4L8.8 12 6.2 8.3zM12 15h6v2h-6v-2z'/%3E%3C/svg%3E"); /* terminal >_ */
     --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
-    --dms-icon-color-before: #39c4b6; /* Cyberpunk teal icons */
-    --dms-icon-color-after: #54c1e6; /* cyan on hover/selected */
+    --dms-icon-color-before: #55ead4; /* Cyberpunk cyan */
+    --dms-icon-color-after: #f3e600; /* yellow on hover/selected */
     --custom-dms-background: color; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
     --dms-background-image-url: url(''); /* url of the background image */
     --dms-background-image-size: cover; /* size of the background image (css background-size property) */
@@ -74,19 +74,13 @@ body {
 
     /* panel labels */
     --panel-labels: on; /* off: default, on: add labels to panels */
-    --label-color: #a5adce; /* Equibop: readable panel labels */
+    --label-color: #f3e600; /* Cyberpunk yellow panel labels */
     --label-font-weight: 500; /* font weight of labels */
 }
 
-/* color options */
+/* color options — Night City palette:
+   #000000 black · #c5003c / #880425 red · #f3e600 yellow · #55ead4 cyan */
 :root {
-    /* red — Cyberpunk 2077 neon (#FF003C) */
-    --red-1: #FF5A7A;
-    --red-2: #FF2A52;
-    --red-3: #FF003C;
-    --red-4: #D60032;
-    --red-5: #A80028;
-
     --colors: on; /* off: discord default colors, on: midnight custom colors */
 
     /* text colors */
@@ -97,66 +91,67 @@ body {
     --text-4: #a5adce; /* Equibop: clearer icon / muted UI text */
     --text-5: #8087a2; /* Equibop: muted channels/chats and timestamps */
 
-    /* background — Cyberpunk 2077 black */
+    /* background — pure black */
     --bg-1: #1E1E1E; /* dark buttons when clicked */
     --bg-2: #141414; /* dark buttons */
     --bg-3: #0A0A0A; /* spacing, secondary elements */
     --bg-4: #000000; /* main background color */
-    --hover: rgba(255, 0, 60, 0.10); /* Cyberpunk red hover */
-    --active: rgba(255, 0, 60, 0.18); /* Cyberpunk red selected/active */
-    --active-2: rgba(255, 0, 60, 0.28); /* extra state for transparent buttons */
-    --message-hover: rgba(255, 0, 60, 0.08); /* messages when hovered */
+    /* chrome washes → cyan (was red-heavy) */
+    --hover: rgba(85, 234, 212, 0.10);
+    --active: rgba(85, 234, 212, 0.18);
+    --active-2: rgba(85, 234, 212, 0.28);
+    --message-hover: rgba(85, 234, 212, 0.08);
 
-    /* accent colors — accent-1 = links (system24); keep red for buttons/chrome */
-    --accent-1: var(--blue-2); /* Cyberpunk blue links */
-    --accent-2: var(--red-2);
-    --accent-3: var(--red-3);
-    --accent-4: var(--red-4);
-    --accent-5: var(--red-5);
-    --accent-new: var(--accent-2); /* Optional: adjust if needed */
-    --mention: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 90%) 40%, transparent);
-    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--accent-2), transparent 95%) 40%, transparent);
+    /* accents: cyan links · yellow mid · red only for danger-ish */
+    --accent-1: var(--blue-2); /* links */
+    --accent-2: var(--yellow-2); /* small accents / mentions */
+    --accent-3: var(--blue-3); /* buttons / panel hover border */
+    --accent-4: var(--blue-4);
+    --accent-5: var(--blue-5);
+    --accent-new: var(--red-3); /* mute/deafen-style controls stay red */
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--yellow-2), transparent 88%) 40%, transparent);
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--yellow-2), transparent 94%) 40%, transparent);
 
-    /* status indicator colors */
-    --online: #39c4b6; /* Cyberpunk teal */
-    --dnd: var(--red-3); /* Cyberpunk red */
-    --idle: #F3E600; /* Cyberpunk yellow */
+    /* status */
+    --online: #55ead4;
+    --dnd: var(--red-3);
+    --idle: #f3e600;
     --streaming: var(--purple-2);
     --offline: var(--text-4);
 
-    /* border colors */
-    --border-light: var(--hover); /* general light border color */
-    --border: var(--active); /* general normal border color */
-    --border-hover: var(--accent-3); /* Cyberpunk red panel hover border */
-    --button-border: hsl(230, 0%, 100%, 0.1); /* neutral border color of buttons */
+    /* borders — cyan chrome, not red */
+    --border-light: var(--hover);
+    --border: var(--active);
+    --border-hover: var(--blue-3);
+    --button-border: hsl(230, 0%, 100%, 0.1);
 
-    /* base colors */
-    --red-1: #FF5A7A;
-    --red-2: #FF2A52;
-    --red-3: #FF003C;
-    --red-4: #D60032;
-    --red-5: #A80028;
+    /* red — #c5003c / #880425 */
+    --red-1: #e84a72;
+    --red-2: #c5003c;
+    --red-3: #c5003c;
+    --red-4: #880425;
+    --red-5: #5c0219;
 
-    /* teal — Cyberpunk (#39c4b6) */
-    --green-1: #5FD4C8;
-    --green-2: #39c4b6;
-    --green-3: #39c4b6;
-    --green-4: #2BA89C;
-    --green-5: #1F877D;
+    /* green channel reused as cyan family (#55ead4) */
+    --green-1: #8af3e4;
+    --green-2: #55ead4;
+    --green-3: #55ead4;
+    --green-4: #2bb8a6;
+    --green-5: #1d8a7c;
 
-    /* cyan — Cyberpunk (#54c1e6) */
-    --blue-1: #7DD4EE;
-    --blue-2: #54c1e6;
-    --blue-3: #54c1e6;
-    --blue-4: #3AADCE;
-    --blue-5: #2A8FA8;
+    /* blue / cyan — #55ead4 */
+    --blue-1: #8af3e4;
+    --blue-2: #55ead4;
+    --blue-3: #55ead4;
+    --blue-4: #2bb8a6;
+    --blue-5: #1d8a7c;
 
-    /* yellow — Cyberpunk (#F3E600) */
-    --yellow-1: #F8F06A;
-    --yellow-2: #F3E600;
-    --yellow-3: #F3E600;
-    --yellow-4: #C9BF00;
-    --yellow-5: #9E9600;
+    /* yellow — #f3e600 */
+    --yellow-1: #f8f06a;
+    --yellow-2: #f3e600;
+    --yellow-3: #f3e600;
+    --yellow-4: #c9bf00;
+    --yellow-5: #9e9600;
 
     --purple-1: hsl(267deg, 83%, 85%);
     --purple-2: hsl(267deg, 83%, 80%);
@@ -192,39 +187,39 @@ body {
     --bg-overlay-1: #0A0A0A !important;
     --bg-overlay-2: #141414 !important;
 
-    /* Discord brand / highlight → Cyberpunk red */
-    --brand-500: #FF003C !important;
-    --brand-560: #FF2A52 !important;
-    --brand-600: #D60032 !important;
-    --control-brand-foreground: #FF003C !important;
-    --control-brand-foreground-new: #FF003C !important;
-    --focus-primary: #FF003C !important;
-    --info-danger-foreground: #FF003C !important;
-    --status-danger: #FF003C !important;
-    --text-brand: #FF003C !important;
+    /* Discord brand / chrome → cyan; danger stays red */
+    --brand-500: #55ead4 !important;
+    --brand-560: #8af3e4 !important;
+    --brand-600: #2bb8a6 !important;
+    --control-brand-foreground: #55ead4 !important;
+    --control-brand-foreground-new: #55ead4 !important;
+    --focus-primary: #55ead4 !important;
+    --info-danger-foreground: #c5003c !important;
+    --status-danger: #c5003c !important;
+    --text-brand: #55ead4 !important;
 
-    /* Links / hover → Cyberpunk 2077 blue */
-    --text-link: #54c1e6 !important;
-    --text-link-low-saturation: #54c1e6 !important;
+    /* Links → cyan; hover accents → yellow */
+    --text-link: #55ead4 !important;
+    --text-link-low-saturation: #55ead4 !important;
     --header-primary: #cad3f5 !important;
 
-    /* Jump-to / message flash highlight → Cyberpunk blue */
-    --background-message-highlight: rgba(84, 193, 230, 0.18) !important;
-    --background-message-highlight-hover: rgba(84, 193, 230, 0.28) !important;
+    /* Jump-to / message flash → cyan */
+    --background-message-highlight: rgba(85, 234, 212, 0.18) !important;
+    --background-message-highlight-hover: rgba(85, 234, 212, 0.28) !important;
 
-    /* Icons → Cyberpunk teal (hover → blue) */
-    --icon-default: #39c4b6 !important;
-    --icon-primary: #39c4b6 !important;
-    --icon-secondary: #39c4b6 !important;
-    --icon-tertiary: #2BA89C !important;
-    --icon-muted: #2BA89C !important;
-    --icon-subtle: #39c4b6 !important;
-    --interactive-normal: #39c4b6 !important;
-    --interactive-hover: #54c1e6 !important;
-    --interactive-active: #54c1e6 !important;
-    --interactive-muted: #2BA89C !important;
-    --interactive-icon-default: #39c4b6 !important;
-    --interactive-icon-hover: #54c1e6 !important;
+    /* Icons → cyan idle, yellow hover */
+    --icon-default: #55ead4 !important;
+    --icon-primary: #55ead4 !important;
+    --icon-secondary: #55ead4 !important;
+    --icon-tertiary: #2bb8a6 !important;
+    --icon-muted: #2bb8a6 !important;
+    --icon-subtle: #55ead4 !important;
+    --interactive-normal: #55ead4 !important;
+    --interactive-hover: #f3e600 !important;
+    --interactive-active: #f3e600 !important;
+    --interactive-muted: #2bb8a6 !important;
+    --interactive-icon-default: #55ead4 !important;
+    --interactive-icon-hover: #f3e600 !important;
 }
 
 /* ---------- Home / DMs: terminal glyph (system24 custom-dms unimplemented) ---------- */
@@ -265,31 +260,31 @@ body {
 #app-mount [class*="unreadPill"],
 #app-mount [class*="newMessagesBar"],
 #app-mount [class*="bar__"][class*="newMessages"] {
-    background-color: #54c1e6 !important;
+    background-color: #55ead4 !important;
     color: #000000 !important;
 }
 
 #app-mount [class*="divider"][class*="isUnread"] [class*="content"],
 #app-mount [class*="unread"][class*="divider"] [class*="content"] {
-    color: #54c1e6 !important;
+    color: #55ead4 !important;
 }
 
 /* Jump-to / highlighted message left edge */
 #app-mount [class*="message"][class*="highlighted"] {
-    box-shadow: inset 2px 0 0 0 #54c1e6 !important;
-    border-left-color: #54c1e6 !important;
+    box-shadow: inset 2px 0 0 0 #55ead4 !important;
+    border-left-color: #55ead4 !important;
 }
 
 /* ---------- Channel / VC header ---------- */
 
 [class*="subtitleContainer"],
 [class*="headerBar"] {
-    --icon-default: #39c4b6;
-    --icon-subtle: #39c4b6;
-    --icon-muted: #2BA89C;
-    --interactive-icon-default: #39c4b6;
-    --interactive-icon-hover: #54c1e6;
-    --interactive-muted: #2BA89C;
+    --icon-default: #55ead4;
+    --icon-subtle: #55ead4;
+    --icon-muted: #2bb8a6;
+    --interactive-icon-default: #55ead4;
+    --interactive-icon-hover: #f3e600;
+    --interactive-muted: #2bb8a6;
     --interactive-text-default: var(--text-3);
     --text-muted: var(--text-4);
     overflow: visible !important;
@@ -348,16 +343,16 @@ body {
 }
 
 [class*="trailing_"] {
-    --icon-default: #39c4b6;
-    --icon-subtle: #39c4b6;
-    --interactive-icon-default: #39c4b6;
+    --icon-default: #55ead4;
+    --icon-subtle: #55ead4;
+    --interactive-icon-default: #55ead4;
     opacity: 1 !important;
 }
 
 [class*="trailing_"] svg {
-    color: #39c4b6 !important;
+    color: #55ead4 !important;
     opacity: 1 !important;
-    fill: #39c4b6 !important;
+    fill: #55ead4 !important;
 }
 
 /* ---------- Panel labels ---------- */
@@ -465,18 +460,18 @@ body {
 }
 
 .vc-channeltabs-bookmark-star {
-    stroke: #39c4b6 !important;
+    stroke: #55ead4 !important;
 }
 
 .vc-channeltabs-bookmark-search-button {
-    color: #39c4b6 !important;
+    color: #55ead4 !important;
 }
 
 .vc-note-button,
 .vc-note-button svg {
-    color: #39c4b6 !important;
+    color: #55ead4 !important;
     opacity: 1 !important;
-    fill: #39c4b6 !important;
+    fill: #55ead4 !important;
 }
 
 /* App icons: teal/cyan via #app-mount --icon-* / --interactive-* vars only */
@@ -488,46 +483,46 @@ body {
   --channels-default (that paints channel names).
 */
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) {
-    color: #F3E600 !important;
+    color: #f3e600 !important;
 }
 
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="overflow"],
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="name"] {
-    color: #F3E600 !important;
-    -webkit-text-fill-color: #F3E600 !important;
+    color: #f3e600 !important;
+    -webkit-text-fill-color: #f3e600 !important;
 }
 
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) > svg,
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="icon"] svg {
-    color: #F3E600 !important;
-    fill: #F3E600 !important;
+    color: #f3e600 !important;
+    fill: #f3e600 !important;
 }
 
 /* ---------- Private channel lock recolor (from KrstlSkll69/vc-snippets, adapted) ---------- */
 /* Use Cyberpunk yellow so private locks stay visible on black. */
 
 [class^=icon] path[d^="M16 4h.5v"] {
-    fill: #F3E600 !important;
+    fill: #f3e600 !important;
 }
 
 [class^=icon] path[d^="M16.5 18H16a1"] {
-    fill: #F3E600 !important;
+    fill: #f3e600 !important;
 }
 
 [class^=icon] path[d^="M16 18h.5v"] {
-    fill: #F3E600 !important;
+    fill: #f3e600 !important;
 }
 
 [class^=searchResultChannelIcon] path[d^="M16 4h.5v-.5a2.5 2.5 0 0 1 5"] {
-    fill: #F3E600 !important;
+    fill: #f3e600 !important;
 }
 
 [class^=searchResultChannelIcon] path[d^="M16.5 18H16a1 1 0 0 0-1"] {
-    fill: #F3E600 !important;
+    fill: #f3e600 !important;
 }
 
 .vc-uvs-speaker path[d^="M16 4h.5v"] {
-    fill: #F3E600 !important;
+    fill: #f3e600 !important;
 }
 
 
@@ -539,25 +534,25 @@ body {
 @keyframes ncAsciiShine {
     0%,
     100% {
-        color: #FF003C;
-        -webkit-text-fill-color: #FF003C;
+        color: #c5003c;
+        -webkit-text-fill-color: #c5003c;
         text-shadow:
-            0 0 6px rgba(255, 0, 60, 0.85),
-            0 0 18px rgba(255, 0, 60, 0.45);
+            0 0 6px rgba(197, 0, 60, 0.85),
+            0 0 18px rgba(197, 0, 60, 0.45);
     }
     33% {
-        color: #F3E600;
-        -webkit-text-fill-color: #F3E600;
+        color: #f3e600;
+        -webkit-text-fill-color: #f3e600;
         text-shadow:
             0 0 6px rgba(243, 230, 0, 0.9),
             0 0 18px rgba(243, 230, 0, 0.45);
     }
     66% {
-        color: #39c4b6;
-        -webkit-text-fill-color: #39c4b6;
+        color: #55ead4;
+        -webkit-text-fill-color: #55ead4;
         text-shadow:
-            0 0 6px rgba(57, 196, 182, 0.9),
-            0 0 18px rgba(57, 196, 182, 0.45);
+            0 0 6px rgba(85, 234, 212, 0.9),
+            0 0 18px rgba(85, 234, 212, 0.45);
     }
 }
 
@@ -576,8 +571,8 @@ body {
         background-image: none !important;
         -webkit-background-clip: border-box !important;
         background-clip: border-box !important;
-        color: #FF003C !important;
-        -webkit-text-fill-color: #FF003C !important;
+        color: #c5003c !important;
+        -webkit-text-fill-color: #c5003c !important;
         animation: ncAsciiShine 2.2s ease-in-out infinite !important;
     }
 
@@ -596,8 +591,8 @@ body {
         font-size: 12px;
         font-family: var(--font, monospace);
         letter-spacing: 0.28em;
-        color: #39c4b6 !important;
-        -webkit-text-fill-color: #39c4b6 !important;
+        color: #55ead4 !important;
+        -webkit-text-fill-color: #55ead4 !important;
         margin-bottom: 10px;
     }
     .text_a2f514::after {
@@ -606,8 +601,8 @@ body {
         font-size: 18px;
         font-family: var(--font, monospace);
         letter-spacing: 0.08em;
-        color: #F3E600 !important;
-        -webkit-text-fill-color: #F3E600 !important;
+        color: #f3e600 !important;
+        -webkit-text-fill-color: #f3e600 !important;
         font-weight: 500;
     }
 }
