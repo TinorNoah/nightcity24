@@ -213,7 +213,7 @@ body {
     --icon-primary: #55ead4 !important;
     --icon-secondary: #55ead4 !important;
     --icon-tertiary: #d6c800 !important;
-    --icon-muted: #a89c00 !important;
+    --icon-muted: #8087a2 !important;
     --icon-subtle: #55ead4 !important;
     --interactive-normal: #55ead4 !important;
     --interactive-hover: #fcee0a !important;
@@ -385,10 +385,10 @@ body {
 [class*="headerBar"] {
     --icon-default: #55ead4;
     --icon-subtle: #55ead4;
-    --icon-muted: #a89c00;
+    --icon-muted: #8087a2;
     --interactive-icon-default: #55ead4;
     --interactive-icon-hover: #fcee0a;
-    --interactive-muted: #a89c00;
+    --interactive-muted: #8087a2;
     --interactive-text-default: var(--text-3);
     --text-muted: var(--text-4);
     overflow: visible !important;
