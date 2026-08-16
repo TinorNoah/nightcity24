@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.1.8
+ * @version 3.1.9
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
@@ -672,26 +672,42 @@ body {
     fill: #fcee0a !important;
 }
 
-/* ---------- Unread channels (distinct from grey read names) ---------- */
-/* Cyan name + red unread rail so unreads pop without looking like categories. */
+/* ---------- Unread channels → neon red names ---------- */
+/*
+  Prefer :has(unread rail) — Discord class hashes / modeUnread* rename often.
+  Keep categories yellow via more-specific aria-expanded rules above.
+*/
 #app-mount [class*="sidebarList"] [class*="modeUnread"],
-#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] {
-    color: #55ead4 !important;
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"],
+#app-mount [class*="sidebarList"] [class*="wrapper"]:has(> [class*="unread"]),
+#app-mount [class*="sidebarList"] [class*="containerDefault"]:has([class*="unread"]),
+#app-mount [class*="sidebarList"] li:has([class*="unread"]:not([class*="Mentions"])) {
+    --channels-default: #c5003c !important;
+    --interactive-normal: #c5003c !important;
+    color: #c5003c !important;
 }
 
 #app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="name"],
 #app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="overflow"],
 #app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="name"],
-#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="overflow"] {
-    color: #55ead4 !important;
-    -webkit-text-fill-color: #55ead4 !important;
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="overflow"],
+#app-mount [class*="sidebarList"] [class*="wrapper"]:has(> [class*="unread"]) [class*="name"],
+#app-mount [class*="sidebarList"] [class*="wrapper"]:has(> [class*="unread"]) [class*="overflow"],
+#app-mount [class*="sidebarList"] [class*="containerDefault"]:has([class*="unread"]) [class*="name"],
+#app-mount [class*="sidebarList"] [class*="containerDefault"]:has([class*="unread"]) [class*="overflow"],
+#app-mount [class*="sidebarList"] li:has([class*="unread"]:not([class*="Mentions"])) [class*="name"],
+#app-mount [class*="sidebarList"] li:has([class*="unread"]:not([class*="Mentions"])) [class*="overflow"] {
+    color: #c5003c !important;
+    -webkit-text-fill-color: #c5003c !important;
     font-weight: 600 !important;
 }
 
 #app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="icon"] svg,
-#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="icon"] svg {
-    color: #55ead4 !important;
-    fill: #55ead4 !important;
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="icon"] svg,
+#app-mount [class*="sidebarList"] [class*="wrapper"]:has(> [class*="unread"]) [class*="icon"] svg,
+#app-mount [class*="sidebarList"] [class*="containerDefault"]:has([class*="unread"]) [class*="icon"] svg {
+    color: #c5003c !important;
+    fill: #c5003c !important;
 }
 
 /* Left unread bar / pill on the channel row */
@@ -699,6 +715,14 @@ body {
 #app-mount [class*="sidebarList"] span[class*="unread"] {
     background: #c5003c !important;
     background-color: #c5003c !important;
+}
+
+/* Don't paint category headers red if they somehow match :has(unread) */
+#app-mount [class*="sidebarList"] [aria-expanded]:not(a),
+#app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="overflow"],
+#app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="name"] {
+    color: #fcee0a !important;
+    -webkit-text-fill-color: #fcee0a !important;
 }
 
 /* ---------- Private channel lock recolor (from KrstlSkll69/vc-snippets, adapted) ---------- */
