@@ -512,13 +512,32 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*=
 
 
 /* ---------- Night City splash (overrides system24 ascii loader) ---------- */
-/* Seamless loop — no mid-cycle jump (that flash made glyphs go full black). */
-@keyframes ncTextShine {
-    from {
-        background-position: 0% 50%;
+/*
+  Do NOT combine transform:skew with background-clip:text — Chromium/Electron
+  drops most glyphs to transparent (looks full black). Animate solid color instead.
+*/
+@keyframes ncAsciiShine {
+    0%,
+    100% {
+        color: #FF003C;
+        -webkit-text-fill-color: #FF003C;
+        text-shadow:
+            0 0 6px rgba(255, 0, 60, 0.85),
+            0 0 18px rgba(255, 0, 60, 0.45);
     }
-    to {
-        background-position: 200% 50%;
+    33% {
+        color: #F3E600;
+        -webkit-text-fill-color: #F3E600;
+        text-shadow:
+            0 0 6px rgba(243, 230, 0, 0.9),
+            0 0 18px rgba(243, 230, 0, 0.45);
+    }
+    66% {
+        color: #39c4b6;
+        -webkit-text-fill-color: #39c4b6;
+        text-shadow:
+            0 0 6px rgba(57, 196, 182, 0.9),
+            0 0 18px rgba(57, 196, 182, 0.45);
     }
 }
 
@@ -530,27 +549,16 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*=
         font-family: monospace !important;
         white-space: pre !important;
         line-height: 1.2 !important;
-        /* Lean ASCII to the right */
+        /* Lean ASCII to the right (safe with solid color, not clip) */
         transform: skewX(-14deg) !important;
         transform-origin: center center !important;
-        /* Repeating gradient so every frame stays painted (no black gaps) */
-        background-color: #F3E600 !important;
-        background-image: repeating-linear-gradient(
-            90deg,
-            #FF003C 0%,
-            #F3E600 25%,
-            #39c4b6 50%,
-            #F3E600 75%,
-            #FF003C 100%
-        ) !important;
-        background-size: 50% 100% !important;
-        background-repeat: repeat !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        color: transparent !important;
-        /* Sweep to the right (not reverse/left) */
-        animation: ncTextShine 2s linear infinite !important;
+        background: none !important;
+        background-image: none !important;
+        -webkit-background-clip: border-box !important;
+        background-clip: border-box !important;
+        color: #FF003C !important;
+        -webkit-text-fill-color: #FF003C !important;
+        animation: ncAsciiShine 2.2s ease-in-out infinite !important;
     }
 
     /* Replace Discord "DID YOU KNOW" tip with Night City copy */
