@@ -88,9 +88,9 @@ body {
     --text-1: hsl(227, 68%, 95%); /* bright text on colored elements */
     --text-2: #cad3f5; /* headings and important text */
     --text-3: #b8c0e0; /* normal text */
-    /* muted / unfocused text → dim neon yellow (keep hue, not olive) */
-    --text-4: #c8bf14;
-    --text-5: #8f8809;
+    /* muted UI text — cool grey (not yellow; yellow is reserved for names/labels) */
+    --text-4: #a5adce;
+    --text-5: #8087a2;
 
     /* background — pure black */
     --bg-1: #1E1E1E; /* dark buttons when clicked */
@@ -222,9 +222,45 @@ body {
     --interactive-icon-default: #55ead4 !important;
     --interactive-icon-hover: #fcee0a !important;
 
-    /* Unfocused channel names / muted list text */
-    --channels-default: #c8bf14 !important;
-    --text-muted: #8f8809 !important;
+    /* Channel list default names stay muted grey; yellow applied only where scoped below */
+    --channels-default: #a5adce !important;
+    --text-muted: #8087a2 !important;
+}
+
+/* ---------- Friends / DMs: yellow names only ---------- */
+/* Preview/status + timestamps must not inherit yellow from muted vars. */
+#app-mount [class*='privateChannels'] [class*='name'],
+#app-mount [class*='privateChannels'] [class*='nameAndDecorators'] > [class*='overflow'],
+#app-mount [class*='privateChannels'] [class*='nameAndDecorators'] [class*='name'],
+#app-mount [class*='privateChannels'] a[class*='channel'] [class*='overflow'],
+#app-mount [class*='peopleColumn'] [class*='username'],
+#app-mount [class*='peopleList'] [class*='username'],
+#app-mount [class*='peopleListItem'] [class*='username'],
+#app-mount [class*='peopleListItem'] [class*='overflow'] {
+    color: #fcee0a !important;
+    -webkit-text-fill-color: #fcee0a !important;
+}
+
+/* Status / last-message preview under the name */
+#app-mount [class*='privateChannels'] [class*='activity'],
+#app-mount [class*='privateChannels'] [class*='subtext'],
+#app-mount [class*='privateChannels'] [class*='subtitle'],
+#app-mount [class*='privateChannels'] [class*='messagePreview'],
+#app-mount [class*='peopleColumn'] [class*='subtext'],
+#app-mount [class*='peopleListItem'] [class*='subtext'],
+#app-mount [class*='peopleListItem'] [class*='activity'],
+#app-mount [class*='peopleListItem'] [class*='text'] {
+    color: #8087a2 !important;
+    -webkit-text-fill-color: #8087a2 !important;
+}
+
+/* Timestamps on the right (18m, 1d, …) → cyan */
+#app-mount [class*='privateChannels'] [class*='timestamp'],
+#app-mount [class*='privateChannels'] time,
+#app-mount [class*='peopleListItem'] [class*='timestamp'],
+#app-mount [class*='peopleListItem'] time {
+    color: #55ead4 !important;
+    -webkit-text-fill-color: #55ead4 !important;
 }
 
 /* ---------- Home / DMs: terminal glyph (system24 custom-dms unimplemented) ---------- */
