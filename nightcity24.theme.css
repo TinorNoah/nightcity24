@@ -512,18 +512,13 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*=
 
 
 /* ---------- Night City splash (overrides system24 ascii loader) ---------- */
+/* Seamless loop — no mid-cycle jump (that flash made glyphs go full black). */
 @keyframes ncTextShine {
-    0% {
+    from {
         background-position: 0% 50%;
     }
-    50% {
-        background-position: 100% 50%;
-    }
-    50.0001% {
-        background-position: -100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
+    to {
+        background-position: 200% 50%;
     }
 }
 
@@ -535,23 +530,27 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*=
         font-family: monospace !important;
         white-space: pre !important;
         line-height: 1.2 !important;
-        /* Animated shimmer — same technique as system24 textShine */
-        background-color: transparent !important;
-        background-image: linear-gradient(
-            to right,
+        /* Lean ASCII to the right */
+        transform: skewX(-14deg) !important;
+        transform-origin: center center !important;
+        /* Repeating gradient so every frame stays painted (no black gaps) */
+        background-color: #F3E600 !important;
+        background-image: repeating-linear-gradient(
+            90deg,
             #FF003C 0%,
             #F3E600 25%,
             #39c4b6 50%,
             #F3E600 75%,
             #FF003C 100%
         ) !important;
-        background-size: 200% auto !important;
-        background-repeat: no-repeat !important;
+        background-size: 50% 100% !important;
+        background-repeat: repeat !important;
         -webkit-background-clip: text !important;
         background-clip: text !important;
         -webkit-text-fill-color: transparent !important;
         color: transparent !important;
-        animation: ncTextShine 1.5s linear infinite reverse !important;
+        /* Sweep to the right (not reverse/left) */
+        animation: ncTextShine 2s linear infinite !important;
     }
 
     /* Replace Discord "DID YOU KNOW" tip with Night City copy */
