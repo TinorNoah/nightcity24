@@ -107,8 +107,8 @@ body {
     --active-2: rgba(255, 0, 60, 0.28); /* extra state for transparent buttons */
     --message-hover: rgba(255, 0, 60, 0.08); /* messages when hovered */
 
-    /* accent colors */
-    --accent-1: var(--red-1);
+    /* accent colors — accent-1 = links (system24); keep red for buttons/chrome */
+    --accent-1: var(--blue-2); /* Cyberpunk blue links */
     --accent-2: var(--red-2);
     --accent-3: var(--red-3);
     --accent-4: var(--red-4);
@@ -203,12 +203,16 @@ body {
     --status-danger: #FF003C !important;
     --text-brand: #FF003C !important;
 
-    /* Links / secondary accents → cyan + teal */
+    /* Links / hover → Cyberpunk 2077 blue */
     --text-link: #54c1e6 !important;
-    --text-link-low-saturation: #39c4b6 !important;
+    --text-link-low-saturation: #54c1e6 !important;
     --header-primary: #cad3f5 !important;
 
-    /* Icons → Cyberpunk teal */
+    /* Jump-to / message flash highlight → Cyberpunk blue */
+    --background-message-highlight: rgba(84, 193, 230, 0.18) !important;
+    --background-message-highlight-hover: rgba(84, 193, 230, 0.28) !important;
+
+    /* Icons → Cyberpunk teal (hover → blue) */
     --icon-default: #39c4b6 !important;
     --icon-primary: #39c4b6 !important;
     --icon-secondary: #39c4b6 !important;
@@ -221,6 +225,25 @@ body {
     --interactive-muted: #2BA89C !important;
     --interactive-icon-default: #39c4b6 !important;
     --interactive-icon-hover: #54c1e6 !important;
+}
+
+/* Unread divider + NEW messages bar → Cyberpunk blue (not brand red) */
+#app-mount [class*="unreadPill"],
+#app-mount [class*="newMessagesBar"],
+#app-mount [class*="bar__"][class*="newMessages"] {
+    background-color: #54c1e6 !important;
+    color: #000000 !important;
+}
+
+#app-mount [class*="divider"][class*="isUnread"] [class*="content"],
+#app-mount [class*="unread"][class*="divider"] [class*="content"] {
+    color: #54c1e6 !important;
+}
+
+/* Jump-to / highlighted message left edge */
+#app-mount [class*="message"][class*="highlighted"] {
+    box-shadow: inset 2px 0 0 0 #54c1e6 !important;
+    border-left-color: #54c1e6 !important;
 }
 
 /* ---------- Channel / VC header ---------- */
