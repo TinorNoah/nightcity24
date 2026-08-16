@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.1.0
+ * @version 3.1.1
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
@@ -374,10 +374,80 @@ body {
     pointer-events: none;
 }
 
-/* Thread / call chrome: allow label to paint outside without breaking chat */
-[class*="callContainer"],
+/* Thread chrome: allow label to paint outside without breaking chat.
+   callContainer keeps overflow:hidden below so streams don't clip. */
 [class*="chatLayerWrapper"] {
     overflow: visible !important;
+}
+
+/* ---------- Streams / Go Live / VC: fit inside panel (no edge clip) ---------- */
+/*
+  system24 labels add padding + overflow quirks; midnight's fullscreen gap
+  sizing is missing from the system24 build. Constrain the stream box and
+  force video/canvas to object-fit:contain within it.
+*/
+#app-mount [class*='callContainer'] {
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+    padding: 8px !important;
+}
+
+#app-mount [class*='callContainer']::after {
+    /* keep "vc" label inside the padded box so we can use overflow:hidden */
+    top: 2px !important;
+    left: 10px !important;
+    z-index: 20 !important;
+}
+
+/* Fullscreen stream / VC shell — respect system24 --gap */
+#app-mount [class*='wrapper'][class*='fullScreen'],
+#app-mount [class*='video'][class*='fullScreen'] {
+    margin-top: var(--gap) !important;
+    margin-left: var(--gap) !important;
+    width: calc(100% - var(--gap)) !important;
+    height: calc(100% - var(--gap)) !important;
+    max-width: calc(100% - var(--gap)) !important;
+    max-height: calc(100% - var(--gap)) !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Inner flex/grid roots must be allowed to shrink */
+#app-mount [class*='callContainer'] > *,
+#app-mount [class*='callContainer'] [class*='root'],
+#app-mount [class*='callContainer'] [class*='videoWrapper'],
+#app-mount [class*='callContainer'] [class*='tile'],
+#app-mount [class*='callContainer'] [class*='preview'],
+#app-mount [class*='callContainer'] [class*='mediaPlayer'],
+#app-mount [class*='callContainer'] [class*='pictureInPicture'] {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    box-sizing: border-box !important;
+}
+
+#app-mount [class*='callContainer'] video,
+#app-mount [class*='callContainer'] canvas {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+/* Sidebar-open stream (chat + stream split): keep both panes from overflowing */
+#app-mount [class*='wrapper'][class*='sidebarOpen'] [class*='callContainer'],
+#app-mount [class*='video'][class*='sidebarOpen'] [class*='callContainer'] {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
 }
 
 /* ---------- Ctrl+K Quick Switcher ---------- */
