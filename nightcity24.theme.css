@@ -512,14 +512,46 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*=
 
 
 /* ---------- Night City splash (overrides system24 ascii loader) ---------- */
+@keyframes ncTextShine {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    50.0001% {
+        background-position: -100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 @container body style(--ascii-loader: system24) {
     .content_a2f514::before {
         content: ' _   _ ___ ____ _   _ _____ ____ ___ _______   __\A| \\ | |_ _/ ___| | | |_   _/ ___|_ _|_   _\\ \\ / /\A|  \\| || | |  _| |_| | | || |    | |  | |  \\ V /\A| |\\  || | |_| |  _  | | || |___ | |  | |   | |\A|_| \\_|___\\____|_| |_| |_| \\____|___| |_|   |_|' !important;
-        background: linear-gradient(90deg, #FF003C 0%, #F3E600 45%, #39c4b6 100%) !important;
-        -webkit-background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-        background-size: 200% auto !important;
+        display: block !important;
         font-size: 16px !important;
+        font-family: monospace !important;
+        white-space: pre !important;
+        line-height: 1.2 !important;
+        /* Animated shimmer — same technique as system24 textShine */
+        background-color: transparent !important;
+        background-image: linear-gradient(
+            to right,
+            #FF003C 0%,
+            #F3E600 25%,
+            #39c4b6 50%,
+            #F3E600 75%,
+            #FF003C 100%
+        ) !important;
+        background-size: 200% auto !important;
+        background-repeat: no-repeat !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        color: transparent !important;
+        animation: ncTextShine 1.5s linear infinite reverse !important;
     }
 
     /* Replace Discord "DID YOU KNOW" tip with Night City copy */
