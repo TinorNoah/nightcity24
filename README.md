@@ -1,6 +1,6 @@
 # Night City 24
 
-Wake the fuck up, samurai. Black chrome TUI for **Equibop / Equicord / Vencord** — Night City black, cyan `#55ead4`, yellow `#f3e600`, neon red `#c5003c`.
+Wake the fuck up, samurai. Black chrome TUI for **Equibop / Equicord / Vencord** — Night City black, cyan `#55ead4`, neon yellow `#fcee0a`, neon red `#c5003c`.
 
 One CSS file. Paste a link or drop it in Themes. No scripts, no builds, no other packages. Built on [refact0r/system24](https://github.com/refact0r/system24).
 
@@ -30,7 +30,7 @@ Enable **Night City 24**. Disable older system24 / Private Channel Recolor theme
 ## What’s inside
 
 - Night City black panels (`#000000`)
-- Cyan icons (`#55ead4`); yellow for labels, unfocused chrome, muted text (`#f3e600`)
+- Cyan icons (`#55ead4`); neon yellow for labels, unfocused chrome, muted text (`#fcee0a`)
 - Neon red for links, mentions, unread/jump, brand focus only (`#c5003c`)
 - Equibop UI fixes (header gap, labels, Quick Switcher, …)
 - Private-channel lock recolor

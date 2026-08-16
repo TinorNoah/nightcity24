@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.1.3
+ * @version 3.1.4
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
@@ -43,7 +43,7 @@ body {
     --dms-icon-svg-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm2.2 3.3 1.4-1.4L11.6 12l-4 5.1-1.4-1.4L8.8 12 6.2 8.3zM12 15h6v2h-6v-2z'/%3E%3C/svg%3E"); /* terminal >_ */
     --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
     --dms-icon-color-before: #55ead4; /* Cyberpunk cyan */
-    --dms-icon-color-after: #f3e600; /* yellow on hover/selected */
+    --dms-icon-color-after: #fcee0a; /* yellow on hover/selected */
     --custom-dms-background: color; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
     --dms-background-image-url: url(''); /* url of the background image */
     --dms-background-image-size: cover; /* size of the background image (css background-size property) */
@@ -74,12 +74,12 @@ body {
 
     /* panel labels */
     --panel-labels: on; /* off: default, on: add labels to panels */
-    --label-color: #f3e600; /* Cyberpunk yellow panel labels */
+    --label-color: #fcee0a; /* Cyberpunk yellow panel labels */
     --label-font-weight: 500; /* font weight of labels */
 }
 
 /* color options — Night City palette:
-   #000000 black · #c5003c / #880425 red · #f3e600 yellow · #55ead4 cyan */
+   #000000 black · #c5003c / #880425 red · #fcee0a yellow · #55ead4 cyan */
 :root {
     --colors: on; /* off: discord default colors, on: midnight custom colors */
 
@@ -88,9 +88,9 @@ body {
     --text-1: hsl(227, 68%, 95%); /* bright text on colored elements */
     --text-2: #cad3f5; /* headings and important text */
     --text-3: #b8c0e0; /* normal text */
-    /* muted / unfocused text → warm yellow-gray */
-    --text-4: #c4bc6a;
-    --text-5: #8a8440;
+    /* muted / unfocused text → dim neon yellow (keep hue, not olive) */
+    --text-4: #c8bf14;
+    --text-5: #8f8809;
 
     /* background — pure black */
     --bg-1: #1E1E1E; /* dark buttons when clicked */
@@ -98,10 +98,10 @@ body {
     --bg-3: #0A0A0A; /* spacing, secondary elements */
     --bg-4: #000000; /* main background color */
     /* washes: yellow for idle/unfocused chrome; red only on true highlights */
-    --hover: rgba(243, 230, 0, 0.07); /* unfocused panel / row hover */
-    --active: rgba(243, 230, 0, 0.12); /* selected but ambient */
-    --active-2: rgba(243, 230, 0, 0.20);
-    --message-hover: rgba(243, 230, 0, 0.06); /* idle message hover — not red */
+    --hover: rgba(252, 238, 10, 0.07); /* unfocused panel / row hover */
+    --active: rgba(252, 238, 10, 0.12); /* selected but ambient */
+    --active-2: rgba(252, 238, 10, 0.20);
+    --message-hover: rgba(252, 238, 10, 0.06); /* idle message hover — not red */
 
     /* accents: red = focused highlights/links · yellow = ambient · cyan = borders */
     --accent-1: var(--red-2); /* links */
@@ -116,13 +116,13 @@ body {
     /* status */
     --online: #55ead4;
     --dnd: var(--red-3);
-    --idle: #f3e600;
+    --idle: #fcee0a;
     --streaming: var(--purple-2);
     --offline: var(--text-4);
 
     /* borders — yellow idle, cyan on strong hover */
     --border-light: var(--hover);
-    --border: rgba(243, 230, 0, 0.22); /* unfocused panel outline */
+    --border: rgba(252, 238, 10, 0.22); /* unfocused panel outline */
     --border-hover: var(--blue-3);
     --button-border: hsl(230, 0%, 100%, 0.1);
 
@@ -147,12 +147,12 @@ body {
     --blue-4: #2bb8a6;
     --blue-5: #1d8a7c;
 
-    /* yellow — #f3e600 */
-    --yellow-1: #f8f06a;
-    --yellow-2: #f3e600;
-    --yellow-3: #f3e600;
-    --yellow-4: #c9bf00;
-    --yellow-5: #9e9600;
+    /* yellow — #fcee0a */
+    --yellow-1: #fff45a;
+    --yellow-2: #fcee0a;
+    --yellow-3: #fcee0a;
+    --yellow-4: #d6c800;
+    --yellow-5: #a89c00;
 
     --purple-1: hsl(267deg, 83%, 85%);
     --purple-2: hsl(267deg, 83%, 80%);
@@ -212,19 +212,19 @@ body {
     --icon-default: #55ead4 !important;
     --icon-primary: #55ead4 !important;
     --icon-secondary: #55ead4 !important;
-    --icon-tertiary: #c9bf00 !important;
-    --icon-muted: #9e9600 !important;
+    --icon-tertiary: #d6c800 !important;
+    --icon-muted: #a89c00 !important;
     --icon-subtle: #55ead4 !important;
     --interactive-normal: #55ead4 !important;
-    --interactive-hover: #f3e600 !important;
-    --interactive-active: #f3e600 !important;
-    --interactive-muted: #9e9600 !important;
+    --interactive-hover: #fcee0a !important;
+    --interactive-active: #fcee0a !important;
+    --interactive-muted: #a89c00 !important;
     --interactive-icon-default: #55ead4 !important;
-    --interactive-icon-hover: #f3e600 !important;
+    --interactive-icon-hover: #fcee0a !important;
 
     /* Unfocused channel names / muted list text */
-    --channels-default: #c4bc6a !important;
-    --text-muted: #8a8440 !important;
+    --channels-default: #c8bf14 !important;
+    --text-muted: #8f8809 !important;
 }
 
 /* ---------- Home / DMs: terminal glyph (system24 custom-dms unimplemented) ---------- */
@@ -298,10 +298,10 @@ body {
 [class*="headerBar"] {
     --icon-default: #55ead4;
     --icon-subtle: #55ead4;
-    --icon-muted: #9e9600;
+    --icon-muted: #a89c00;
     --interactive-icon-default: #55ead4;
-    --interactive-icon-hover: #f3e600;
-    --interactive-muted: #9e9600;
+    --interactive-icon-hover: #fcee0a;
+    --interactive-muted: #a89c00;
     --interactive-text-default: var(--text-3);
     --text-muted: var(--text-4);
     overflow: visible !important;
@@ -570,46 +570,46 @@ body {
   --channels-default (that paints channel names).
 */
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) {
-    color: #f3e600 !important;
+    color: #fcee0a !important;
 }
 
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="overflow"],
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="name"] {
-    color: #f3e600 !important;
-    -webkit-text-fill-color: #f3e600 !important;
+    color: #fcee0a !important;
+    -webkit-text-fill-color: #fcee0a !important;
 }
 
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) > svg,
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="icon"] svg {
-    color: #f3e600 !important;
-    fill: #f3e600 !important;
+    color: #fcee0a !important;
+    fill: #fcee0a !important;
 }
 
 /* ---------- Private channel lock recolor (from KrstlSkll69/vc-snippets, adapted) ---------- */
 /* Use Cyberpunk yellow so private locks stay visible on black. */
 
 [class^=icon] path[d^="M16 4h.5v"] {
-    fill: #f3e600 !important;
+    fill: #fcee0a !important;
 }
 
 [class^=icon] path[d^="M16.5 18H16a1"] {
-    fill: #f3e600 !important;
+    fill: #fcee0a !important;
 }
 
 [class^=icon] path[d^="M16 18h.5v"] {
-    fill: #f3e600 !important;
+    fill: #fcee0a !important;
 }
 
 [class^=searchResultChannelIcon] path[d^="M16 4h.5v-.5a2.5 2.5 0 0 1 5"] {
-    fill: #f3e600 !important;
+    fill: #fcee0a !important;
 }
 
 [class^=searchResultChannelIcon] path[d^="M16.5 18H16a1 1 0 0 0-1"] {
-    fill: #f3e600 !important;
+    fill: #fcee0a !important;
 }
 
 .vc-uvs-speaker path[d^="M16 4h.5v"] {
-    fill: #f3e600 !important;
+    fill: #fcee0a !important;
 }
 
 
@@ -628,11 +628,11 @@ body {
             0 0 18px rgba(197, 0, 60, 0.45);
     }
     33% {
-        color: #f3e600;
-        -webkit-text-fill-color: #f3e600;
+        color: #fcee0a;
+        -webkit-text-fill-color: #fcee0a;
         text-shadow:
-            0 0 6px rgba(243, 230, 0, 0.9),
-            0 0 18px rgba(243, 230, 0, 0.45);
+            0 0 6px rgba(252, 238, 10, 0.9),
+            0 0 18px rgba(252, 238, 10, 0.45);
     }
     66% {
         color: #55ead4;
@@ -688,8 +688,8 @@ body {
         font-size: 18px;
         font-family: var(--font, monospace);
         letter-spacing: 0.08em;
-        color: #f3e600 !important;
-        -webkit-text-fill-color: #f3e600 !important;
+        color: #fcee0a !important;
+        -webkit-text-fill-color: #fcee0a !important;
         font-weight: 500;
     }
 }
