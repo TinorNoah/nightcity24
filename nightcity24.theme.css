@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.1.6
+ * @version 3.1.7
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
@@ -218,7 +218,7 @@ body {
     --interactive-normal: #55ead4 !important;
     --interactive-hover: #fcee0a !important;
     --interactive-active: #fcee0a !important;
-    --interactive-muted: #a89c00 !important;
+    --interactive-muted: #8087a2 !important; /* DM previews / muted labels — NOT yellow */
     --interactive-icon-default: #55ead4 !important;
     --interactive-icon-hover: #fcee0a !important;
 
@@ -227,35 +227,59 @@ body {
     --text-muted: #8087a2 !important;
 }
 
+/* Text selection highlight → neon red */
+#app-mount ::selection,
+::selection {
+    background: rgba(197, 0, 60, 0.9) !important;
+    color: #ffffff !important;
+}
+#app-mount ::-moz-selection,
+::-moz-selection {
+    background: rgba(197, 0, 60, 0.9) !important;
+    color: #ffffff !important;
+}
+
 /* ---------- Friends / DMs: yellow names only ---------- */
-/* Preview/status + timestamps must not inherit yellow from muted vars. */
-#app-mount [class*='privateChannels'] [class*='name'],
+/*
+  Discord paints DM previews with --interactive-muted (was yellow — fixed above).
+  Also avoid broad [class*="overflow"] yellow (that hit name AND preview).
+*/
+#app-mount [class*='privateChannels'] [class*='interactive'],
+#app-mount [class*='privateChannels'] a[class*='channel'],
+#app-mount [class*='privateChannels'] [class*='link'],
+#app-mount [class*='peopleListItem'] {
+    color: #8087a2 !important;
+}
+
+/* Display name only */
 #app-mount [class*='privateChannels'] [class*='nameAndDecorators'] > [class*='overflow'],
 #app-mount [class*='privateChannels'] [class*='nameAndDecorators'] [class*='name'],
-#app-mount [class*='privateChannels'] a[class*='channel'] [class*='overflow'],
+#app-mount [class*='privateChannels'] [class*='nameAndDecorators'],
 #app-mount [class*='peopleColumn'] [class*='username'],
 #app-mount [class*='peopleList'] [class*='username'],
-#app-mount [class*='peopleListItem'] [class*='username'],
-#app-mount [class*='peopleListItem'] [class*='overflow'] {
+#app-mount [class*='peopleListItem'] [class*='username'] {
     color: #fcee0a !important;
     -webkit-text-fill-color: #fcee0a !important;
 }
 
-/* Status / last-message preview under the name */
+/* Force preview / activity line off yellow even if nested overflow */
 #app-mount [class*='privateChannels'] [class*='activity'],
+#app-mount [class*='privateChannels'] [class*='activityText'],
 #app-mount [class*='privateChannels'] [class*='subtext'],
 #app-mount [class*='privateChannels'] [class*='subtitle'],
 #app-mount [class*='privateChannels'] [class*='messagePreview'],
-#app-mount [class*='peopleColumn'] [class*='subtext'],
+#app-mount [class*='privateChannels'] [class*='layout'] > div:last-child,
+#app-mount [class*='privateChannels'] [class*='content'] > div:last-child:not([class*='nameAndDecorators']),
 #app-mount [class*='peopleListItem'] [class*='subtext'],
 #app-mount [class*='peopleListItem'] [class*='activity'],
-#app-mount [class*='peopleListItem'] [class*='text'] {
+#app-mount [class*='peopleListItem'] [class*='activityText'] {
     color: #8087a2 !important;
     -webkit-text-fill-color: #8087a2 !important;
 }
 
 /* Timestamps on the right (18m, 1d, …) → cyan */
 #app-mount [class*='privateChannels'] [class*='timestamp'],
+#app-mount [class*='privateChannels'] [class*='lastMessageTimestamp'],
 #app-mount [class*='privateChannels'] time,
 #app-mount [class*='peopleListItem'] [class*='timestamp'],
 #app-mount [class*='peopleListItem'] time {
