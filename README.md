@@ -1,8 +1,8 @@
 # Night City 24
 
-A cyberpunk TUI Discord theme for **Equibop / Equicord / Vencord**.
+Wake the fuck up, samurai. Black chrome TUI for **Equibop / Equicord / Vencord** — Night City black, neon red, teal icons, yellow categories.
 
-One CSS file. Paste a link or drop it in your themes folder. No scripts, no builds, no other packages.
+One CSS file. Paste a link or drop it in Themes. No scripts, no builds, no other packages. Built on [refact0r/system24](https://github.com/refact0r/system24).
 
 ## Install (link)
 
