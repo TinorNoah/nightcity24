@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.0.1
+ * @version 3.0.2
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — neon red, teal icons, yellow categories. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
@@ -38,9 +38,9 @@ body {
     --custom-window-controls: off; /* off: default window controls, on: custom window controls */
     --window-control-size: 14px; /* size of custom window controls */
 
-    /* dms button options */
-    --custom-dms-icon: hide; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
-    --dms-icon-svg-url: url(''); /* icon svg url. MUST BE A SVG. */
+    /* dms button options — terminal glyph via Night City CSS (system24 vars alone are unimplemented) */
+    --custom-dms-icon: custom; /* off: default discord icon, hide: remove icon, custom: use --dms-icon-svg-url */
+    --dms-icon-svg-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1 2v14h16V5H4zm2.2 3.3 1.4-1.4L11.6 12l-4 5.1-1.4-1.4L8.8 12 6.2 8.3zM12 15h6v2h-6v-2z'/%3E%3C/svg%3E"); /* terminal >_ */
     --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
     --dms-icon-color-before: #39c4b6; /* Cyberpunk teal icons */
     --dms-icon-color-after: #54c1e6; /* cyan on hover/selected */
@@ -225,6 +225,40 @@ body {
     --interactive-muted: #2BA89C !important;
     --interactive-icon-default: #39c4b6 !important;
     --interactive-icon-hover: #54c1e6 !important;
+}
+
+/* ---------- Home / DMs: terminal glyph (system24 custom-dms unimplemented) ---------- */
+#app-mount [data-list-item-id='guildsnav___home'] > [class*='childWrapper'] {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--dms-background-color) !important;
+}
+
+#app-mount [data-list-item-id='guildsnav___home'] > [class*='childWrapper'] > svg {
+    display: none !important;
+}
+
+#app-mount [data-list-item-id='guildsnav___home'] > [class*='childWrapper']::before {
+    content: '';
+    display: block;
+    width: 65%;
+    height: 65%;
+    background-color: var(--dms-icon-color-before);
+    -webkit-mask-image: var(--dms-icon-svg-url);
+    mask-image: var(--dms-icon-svg-url);
+    -webkit-mask-size: var(--dms-icon-svg-size);
+    mask-size: var(--dms-icon-svg-size);
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+
+#app-mount [data-list-item-id='guildsnav___home']:hover > [class*='childWrapper']::before,
+#app-mount [data-list-item-id='guildsnav___home'][class*='selected'] > [class*='childWrapper']::before {
+    background-color: var(--dms-icon-color-after);
 }
 
 /* Unread divider + NEW messages bar → Cyberpunk blue (not brand red) */
