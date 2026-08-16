@@ -1,9 +1,10 @@
 /**
- * @name system24 (cyberpunk)
- * @author refact0r + TinorNoah
- * @version 2.1.0
- * @description Cyberpunk system24 for Equibop/Equicord. Black BG, neon red accents, teal icons, yellow categories, private-channel lock recolor, Equibop UI fixes. Paste raw GitHub URL as an online theme or drop this file into Themes.
- * @source https://github.com/TinorNoah/system24-cyberpunk-theme
+ * @name Night City 24
+ * @author TinorNoah
+ * @version 3.0.0
+ * @description Night City TUI theme for Equibop/Equicord. Based on refact0r/system24. Cyberpunk black, neon red, teal icons, yellow categories, Equibop UI fixes, private-channel locks. Paste raw GitHub URL or drop into Themes.
+ * @source https://github.com/TinorNoah/nightcity24
+ * @website https://github.com/refact0r/system24
 */
 
 /* import theme modules */
@@ -69,7 +70,7 @@ body {
     /* styling options */
     --custom-spotify-bar: on; /* off: default, on: custom text-like spotify progress bar */
     --ascii-titles: on; /* off: default, on: use ascii font for titles at the start of a channel */
-    --ascii-loader: system24; /* off: default, system24: use system24 ascii loader, cats: use cats loader */
+    --ascii-loader: system24; /* keep system24 loader mode; Night City art/tip overridden below */
 
     /* panel labels */
     --panel-labels: on; /* off: default, on: add labels to panels */
@@ -507,4 +508,70 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*=
 
 .vc-uvs-speaker path[d^="M16 4h.5v"] {
     fill: #F3E600 !important;
+}
+
+
+/* ---------- Night City splash (overrides system24 ascii loader) ---------- */
+@container body style(--ascii-loader: system24) {
+    .content_a2f514::before {
+        content: ' _   _ ___ ____ _   _ _____ ____ ___ _______   __\A| \\ | |_ _/ ___| | | |_   _/ ___|_ _|_   _\\ \\ / /\A|  \\| || | |  _| |_| | | || |    | |  | |  \\ V /\A| |\\  || | |_| |  _  | | || |___ | |  | |   | |\A|_| \\_|___\\____|_| |_| |_| \\____|___| |_|   |_|' !important;
+        background: linear-gradient(90deg, #FF003C 0%, #F3E600 45%, #39c4b6 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-size: 200% auto !important;
+        font-size: 16px !important;
+    }
+
+    /* Replace Discord "DID YOU KNOW" tip with Night City copy */
+    .text_a2f514 {
+        font-size: 0 !important;
+        color: transparent !important;
+        position: static !important;
+    }
+    .text_a2f514 * {
+        display: none !important;
+    }
+    .text_a2f514::before {
+        content: 'NETWATCH // INCOMING';
+        display: block;
+        font-size: 12px;
+        font-family: var(--font, monospace);
+        letter-spacing: 0.28em;
+        color: #39c4b6 !important;
+        -webkit-text-fill-color: #39c4b6 !important;
+        margin-bottom: 10px;
+    }
+    .text_a2f514::after {
+        content: 'WAKE THE FUCK UP, SAMURAI';
+        display: block;
+        font-size: 18px;
+        font-family: var(--font, monospace);
+        letter-spacing: 0.08em;
+        color: #F3E600 !important;
+        -webkit-text-fill-color: #F3E600 !important;
+        font-weight: 500;
+    }
+}
+
+/* Fallback if Discord renames splash classes */
+#app-mount [class*="content_"]:has(> [class*="spinner"]) > [class*="text_"] {
+    font-size: 0 !important;
+}
+#app-mount [class*="content_"]:has(> [class*="spinner"]) > [class*="text_"] * {
+    display: none !important;
+}
+#app-mount [class*="content_"]:has(> [class*="spinner"]) > [class*="text_"]::before {
+    content: 'NETWATCH // INCOMING';
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: #39c4b6 !important;
+    margin-bottom: 10px;
+}
+#app-mount [class*="content_"]:has(> [class*="spinner"]) > [class*="text_"]::after {
+    content: 'WAKE THE FUCK UP, SAMURAI';
+    display: block;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    color: #F3E600 !important;
 }
