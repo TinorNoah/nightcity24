@@ -12,7 +12,7 @@ Settings → Themes → Online Themes / Theme Links → paste:
 https://raw.githubusercontent.com/TinorNoah/nightcity24/main/nightcity24.theme.css
 ```
 
-Enable **Night City 24**. Disable older system24 / Private Channel Recolor themes so they don’t stack.
+Enable **Night City 24** only. Do **not** also enable Midnight, system24, or Private Channel Recolor — Night City already includes system24 + lock recolor, and stacking themes makes Equibop sluggish.
 
 ## Install (file)
 

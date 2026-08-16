@@ -1,8 +1,9 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.1.9
- * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
+ * @version 3.2.0
+ * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Use as the only enabled theme (do not stack Midnight).
+
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
 */
@@ -239,52 +240,17 @@ body {
     color: #ffffff !important;
 }
 
-/* ---------- Friends / DMs: yellow names only ---------- */
-/*
-  Discord paints DM previews with --interactive-muted (was yellow — fixed above).
-  Also avoid broad [class*="overflow"] yellow (that hit name AND preview).
-*/
-#app-mount [class*='privateChannels'] [class*='interactive'],
-#app-mount [class*='privateChannels'] a[class*='channel'],
-#app-mount [class*='privateChannels'] [class*='link'],
-#app-mount [class*='peopleListItem'] {
-    color: #8087a2 !important;
-}
-
-/* Display name only */
-#app-mount [class*='privateChannels'] [class*='nameAndDecorators'] > [class*='overflow'],
-#app-mount [class*='privateChannels'] [class*='nameAndDecorators'] [class*='name'],
+/* ---------- Friends / DMs: yellow names only (vars do the heavy lifting) ---------- */
 #app-mount [class*='privateChannels'] [class*='nameAndDecorators'],
-#app-mount [class*='peopleColumn'] [class*='username'],
-#app-mount [class*='peopleList'] [class*='username'],
-#app-mount [class*='peopleListItem'] [class*='username'] {
+#app-mount [class*='peopleListItem'] [class*='username'],
+#app-mount [class*='peopleColumn'] [class*='username'] {
     color: #fcee0a !important;
     -webkit-text-fill-color: #fcee0a !important;
 }
 
-/* Force preview / activity line off yellow even if nested overflow */
-#app-mount [class*='privateChannels'] [class*='activity'],
-#app-mount [class*='privateChannels'] [class*='activityText'],
-#app-mount [class*='privateChannels'] [class*='subtext'],
-#app-mount [class*='privateChannels'] [class*='subtitle'],
-#app-mount [class*='privateChannels'] [class*='messagePreview'],
-#app-mount [class*='privateChannels'] [class*='layout'] > div:last-child,
-#app-mount [class*='privateChannels'] [class*='content'] > div:last-child:not([class*='nameAndDecorators']),
-#app-mount [class*='peopleListItem'] [class*='subtext'],
-#app-mount [class*='peopleListItem'] [class*='activity'],
-#app-mount [class*='peopleListItem'] [class*='activityText'] {
-    color: #8087a2 !important;
-    -webkit-text-fill-color: #8087a2 !important;
-}
-
-/* Timestamps on the right (18m, 1d, …) → cyan */
-#app-mount [class*='privateChannels'] [class*='timestamp'],
 #app-mount [class*='privateChannels'] [class*='lastMessageTimestamp'],
-#app-mount [class*='privateChannels'] time,
-#app-mount [class*='peopleListItem'] [class*='timestamp'],
-#app-mount [class*='peopleListItem'] time {
+#app-mount [class*='privateChannels'] time {
     color: #55ead4 !important;
-    -webkit-text-fill-color: #55ead4 !important;
 }
 
 /* ---------- Home / DMs: terminal glyph (system24 custom-dms unimplemented) ---------- */
@@ -321,22 +287,15 @@ body {
     background-color: var(--dms-icon-color-after);
 }
 
-/* Message dividers: red line; date text cyan; NEW/unread label stays red */
-#app-mount [class*="divider"] {
+/* Message dividers (chat only — not every Discord "divider") */
+#app-mount ol[data-list-id='chat-messages'] [class*='divider'],
+#app-mount [class*='scrollerInner'] > [class*='divider'] {
     border-color: #c5003c !important;
     color: #c5003c !important;
 }
 
-#app-mount [class*="divider"]::before,
-#app-mount [class*="divider"]::after {
-    background: #c5003c !important;
-    background-color: #c5003c !important;
-    border-color: #c5003c !important;
-}
-
-/* Date chip in the middle of a normal day divider */
-#app-mount [class*="divider"]:not([class*="isUnread"]) > [class*="content"],
-#app-mount [class*="divider"]:not([class*="isUnread"]) [class*="content"] {
+#app-mount ol[data-list-id='chat-messages'] [class*='divider']:not([class*='isUnread']) [class*='content'],
+#app-mount [class*='scrollerInner'] > [class*='divider']:not([class*='isUnread']) [class*='content'] {
     color: #55ead4 !important;
     -webkit-text-fill-color: #55ead4 !important;
 }
@@ -367,15 +326,13 @@ body {
     border-left-color: #c5003c !important;
 }
 
-/* Explicit message/markdown links (Discord sometimes bypasses --text-link) */
+/* Explicit chat links (avoid global [class*="anchor"] — too broad) */
 #app-mount [class*="markup"] a,
-#app-mount [class*="embedTitle"] a,
-#app-mount [class*="anchor"] {
+#app-mount [class*="embedTitle"] a {
     color: #c5003c !important;
 }
 #app-mount [class*="markup"] a:hover,
-#app-mount [class*="embedTitle"] a:hover,
-#app-mount [class*="anchor"]:hover {
+#app-mount [class*="embedTitle"] a:hover {
     color: #e84a72 !important;
 }
 
@@ -484,74 +441,37 @@ body {
     overflow: visible !important;
 }
 
-/* ---------- Streams / Go Live / VC: fit inside panel (no edge clip) ---------- */
-/*
-  system24 labels add padding + overflow quirks; midnight's fullscreen gap
-  sizing is missing from the system24 build. Constrain the stream box and
-  force video/canvas to object-fit:contain within it.
-*/
+/* ---------- Streams / Go Live / VC: fit inside panel (lean) ---------- */
 #app-mount [class*='callContainer'] {
     box-sizing: border-box !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-height: 100% !important;
     overflow: hidden !important;
     padding: 8px !important;
 }
 
 #app-mount [class*='callContainer']::after {
-    /* keep "vc" label inside the padded box so we can use overflow:hidden */
     top: 2px !important;
     left: 10px !important;
     z-index: 20 !important;
 }
 
-/* Fullscreen stream / VC shell — respect system24 --gap */
 #app-mount [class*='wrapper'][class*='fullScreen'],
 #app-mount [class*='video'][class*='fullScreen'] {
     margin-top: var(--gap) !important;
     margin-left: var(--gap) !important;
     width: calc(100% - var(--gap)) !important;
     height: calc(100% - var(--gap)) !important;
-    max-width: calc(100% - var(--gap)) !important;
-    max-height: calc(100% - var(--gap)) !important;
     box-sizing: border-box !important;
     min-width: 0 !important;
     overflow: hidden !important;
 }
 
-/* Inner flex/grid roots must be allowed to shrink */
-#app-mount [class*='callContainer'] > *,
-#app-mount [class*='callContainer'] [class*='root'],
-#app-mount [class*='callContainer'] [class*='videoWrapper'],
-#app-mount [class*='callContainer'] [class*='tile'],
-#app-mount [class*='callContainer'] [class*='preview'],
-#app-mount [class*='callContainer'] [class*='mediaPlayer'],
-#app-mount [class*='callContainer'] [class*='pictureInPicture'] {
-    min-width: 0 !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    box-sizing: border-box !important;
-}
-
 #app-mount [class*='callContainer'] video,
 #app-mount [class*='callContainer'] canvas {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
     max-width: 100% !important;
     max-height: 100% !important;
     object-fit: contain !important;
-    object-position: center !important;
-}
-
-/* Sidebar-open stream (chat + stream split): keep both panes from overflowing */
-#app-mount [class*='wrapper'][class*='sidebarOpen'] [class*='callContainer'],
-#app-mount [class*='video'][class*='sidebarOpen'] [class*='callContainer'] {
-    min-width: 0 !important;
-    flex: 1 1 auto !important;
 }
 
 /* ---------- Ctrl+K Quick Switcher ---------- */
@@ -672,16 +592,9 @@ body {
     fill: #fcee0a !important;
 }
 
-/* ---------- Unread channels → neon red names ---------- */
-/*
-  Prefer :has(unread rail) — Discord class hashes / modeUnread* rename often.
-  Keep categories yellow via more-specific aria-expanded rules above.
-*/
+/* ---------- Unread channels → neon red names (no :has — modeUnread only) ---------- */
 #app-mount [class*="sidebarList"] [class*="modeUnread"],
-#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"],
-#app-mount [class*="sidebarList"] [class*="wrapper"]:has(> [class*="unread"]),
-#app-mount [class*="sidebarList"] [class*="containerDefault"]:has([class*="unread"]),
-#app-mount [class*="sidebarList"] li:has([class*="unread"]:not([class*="Mentions"])) {
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] {
     --channels-default: #c5003c !important;
     --interactive-normal: #c5003c !important;
     color: #c5003c !important;
@@ -690,39 +603,20 @@ body {
 #app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="name"],
 #app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="overflow"],
 #app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="name"],
-#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="overflow"],
-#app-mount [class*="sidebarList"] [class*="wrapper"]:has(> [class*="unread"]) [class*="name"],
-#app-mount [class*="sidebarList"] [class*="wrapper"]:has(> [class*="unread"]) [class*="overflow"],
-#app-mount [class*="sidebarList"] [class*="containerDefault"]:has([class*="unread"]) [class*="name"],
-#app-mount [class*="sidebarList"] [class*="containerDefault"]:has([class*="unread"]) [class*="overflow"],
-#app-mount [class*="sidebarList"] li:has([class*="unread"]:not([class*="Mentions"])) [class*="name"],
-#app-mount [class*="sidebarList"] li:has([class*="unread"]:not([class*="Mentions"])) [class*="overflow"] {
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="overflow"] {
     color: #c5003c !important;
     -webkit-text-fill-color: #c5003c !important;
     font-weight: 600 !important;
 }
 
 #app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="icon"] svg,
-#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="icon"] svg,
-#app-mount [class*="sidebarList"] [class*="wrapper"]:has(> [class*="unread"]) [class*="icon"] svg,
-#app-mount [class*="sidebarList"] [class*="containerDefault"]:has([class*="unread"]) [class*="icon"] svg {
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="icon"] svg {
     color: #c5003c !important;
     fill: #c5003c !important;
 }
 
-/* Left unread bar / pill on the channel row */
-#app-mount [class*="sidebarList"] [class*="unread"]:not([class*="Mentions"]):not([class*="Bottom"]):not([class*="Top"]),
-#app-mount [class*="sidebarList"] span[class*="unread"] {
-    background: #c5003c !important;
+#app-mount [class*="sidebarList"] [class*="unread"]:not([class*="Mentions"]):not([class*="Bottom"]):not([class*="Top"]) {
     background-color: #c5003c !important;
-}
-
-/* Don't paint category headers red if they somehow match :has(unread) */
-#app-mount [class*="sidebarList"] [aria-expanded]:not(a),
-#app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="overflow"],
-#app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="name"] {
-    color: #fcee0a !important;
-    -webkit-text-fill-color: #fcee0a !important;
 }
 
 /* ---------- Private channel lock recolor (from KrstlSkll69/vc-snippets, adapted) ---------- */
