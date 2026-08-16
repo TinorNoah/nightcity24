@@ -21,12 +21,12 @@ body {
     --gap: 16px; /* spacing between panels (16px so channel/thread labels fit on Equibop) */
     --divider-thickness: 4px; /* thickness of unread messages divider and highlighted message borders */
     --border-thickness: 2px; /* thickness of borders around main panels. DOES NOT AFFECT OTHER BORDERS */
-    --border-hover-transition: 0.2s ease; /* transition for borders when hovered */
+    --border-hover-transition: 0s; /* 0s cuts channel-list hover cost from system24 */
 
-    /* animation/transition options */
+    /* animation/transition options — 0s cuts channel-list hover cost from system24 */
     --animations: on; /* off: disable animations/transitions, on: enable animations/transitions */
-    --list-item-transition: 0.2s ease; /* transition for list items */
-    --dms-icon-svg-transition: 0.4s ease; /* transition for the dms icon */
+    --list-item-transition: 0s;
+    --dms-icon-svg-transition: 0s;
 
     /* top bar options */
     --top-bar-height: var(--gap); /* height of the top bar (discord default is 36px, old discord style is 24px, var(--gap) recommended if button position is set to titlebar) */
@@ -314,8 +314,7 @@ body {
 [class*="channelTextArea"]::after,
 [class*="membersWrap"]::after,
 [class*="peopleColumn"]::after,
-[class*="nowPlayingColumn"]::after,
-[class*="container_"]::after {
+[class*="nowPlayingColumn"]::after {
     top: -11px !important;
     line-height: 1 !important;
     font-size: 13px !important;
@@ -331,42 +330,37 @@ body {
 
 /* ---------- Ctrl+K Quick Switcher ---------- */
 /*
-  Match via body:has(placeholder) so it still applies if Discord nests
-  the input oddly. Never set height:auto on rows (virtualized list).
+  Scope to Discord's quickswitcher container — no body:has / universal *.
+  Never set height:auto on rows (virtualized list).
   Force Discord UI font — DM Mono makes path/name fragments overlap.
 */
-body:has(input[placeholder*="Where would you like"]) {
+[class*="quickswitcher"] {
     --vc-qs-font: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-body:has(input[placeholder*="Where would you like"]) [class*="layer"],
-body:has(input[placeholder*="Where would you like"]) [class*="layer"] * {
+    --font-primary: var(--vc-qs-font) !important;
+    --font-display: var(--vc-qs-font) !important;
+    --font: var(--vc-qs-font) !important;
     font-family: var(--vc-qs-font) !important;
     letter-spacing: normal !important;
 }
 
-body:has(input[placeholder*="Where would you like"]) [class*="layer"] {
-    --font-primary: var(--vc-qs-font) !important;
-    --font-display: var(--vc-qs-font) !important;
-    --font: var(--vc-qs-font) !important;
-}
-
-body:has(input[placeholder*="Where would you like"]) input[placeholder*="Where would you like"] {
+[class*="quickswitcher"] input {
     width: 100% !important;
     box-sizing: border-box !important;
+    font-family: var(--vc-qs-font) !important;
 }
 
 /* Result row: keep as a single horizontal flex line */
-body:has(input[placeholder*="Where would you like"]) [role="option"],
-body:has(input[placeholder*="Where would you like"]) [class*="option_"] {
+[class*="quickswitcher"] [role="option"],
+[class*="quickswitcher"] [class*="option_"] {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     overflow: hidden !important;
+    font-family: var(--vc-qs-font) !important;
 }
 
-body:has(input[placeholder*="Where would you like"]) [role="option"] > div,
-body:has(input[placeholder*="Where would you like"]) [class*="option_"] > div {
+[class*="quickswitcher"] [role="option"] > div,
+[class*="quickswitcher"] [class*="option_"] > div {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
@@ -378,12 +372,12 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] > div {
 }
 
 /* Name / path block — static flow, ellipsis instead of stacked absolutes */
-body:has(input[placeholder*="Where would you like"]) [role="option"] [class*="content"],
-body:has(input[placeholder*="Where would you like"]) [role="option"] [class*="name"],
-body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*="content"],
-body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*="name"],
-body:has(input[placeholder*="Where would you like"]) [class*="contentDefault"],
-body:has(input[placeholder*="Where would you like"]) [class*="contentFocused"] {
+[class*="quickswitcher"] [role="option"] [class*="content"],
+[class*="quickswitcher"] [role="option"] [class*="name"],
+[class*="quickswitcher"] [class*="option_"] [class*="content"],
+[class*="quickswitcher"] [class*="option_"] [class*="name"],
+[class*="quickswitcher"] [class*="contentDefault"],
+[class*="quickswitcher"] [class*="contentFocused"] {
     flex: 1 1 auto !important;
     min-width: 0 !important;
     max-width: 100% !important;
@@ -396,21 +390,9 @@ body:has(input[placeholder*="Where would you like"]) [class*="contentFocused"] {
     line-height: normal !important;
 }
 
-body:has(input[placeholder*="Where would you like"]) [role="option"] [class*="content"] *,
-body:has(input[placeholder*="Where would you like"]) [role="option"] [class*="name"] *,
-body:has(input[placeholder*="Where would you like"]) [class*="contentDefault"] *,
-body:has(input[placeholder*="Where would you like"]) [class*="contentFocused"] * {
-    position: static !important;
-    inset: auto !important;
-    transform: none !important;
-    float: none !important;
-    line-height: normal !important;
-    white-space: nowrap !important;
-}
-
 /* Guild / misc label on the right */
-body:has(input[placeholder*="Where would you like"]) [role="option"] [class*="misc"],
-body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*="misc"] {
+[class*="quickswitcher"] [role="option"] [class*="misc"],
+[class*="quickswitcher"] [class*="option_"] [class*="misc"] {
     flex: 0 1 auto !important;
     max-width: 35% !important;
     margin-left: auto !important;
@@ -440,26 +422,7 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*=
     fill: #39c4b6 !important;
 }
 
-/* App / channel-list icons (SVGs only — not channel name text) */
-#app-mount [class*="sidebarList"] a svg,
-#app-mount [class*="sidebarList"] [class*="icon"] svg,
-#app-mount [class*="toolbar"] svg,
-#app-mount [class*="headerBar"] svg,
-#app-mount [class*="subtitleContainer"] svg,
-#app-mount [class*="panels_"] svg,
-#app-mount [class*="listItem"] svg,
-#app-mount [class*="button"] svg,
-#app-mount [class*="iconWrapper"] svg {
-    color: #39c4b6 !important;
-    fill: #39c4b6 !important;
-}
-
-#app-mount [class*="sidebarList"] a:hover svg,
-#app-mount [class*="toolbar"] [class*="button"]:hover svg,
-#app-mount [class*="headerBar"] [class*="icon"]:hover svg {
-    color: #54c1e6 !important;
-    fill: #54c1e6 !important;
-}
+/* App icons: teal/cyan via #app-mount --icon-* / --interactive-* vars only */
 
 /* ---------- Channel categories only — Cyberpunk 2077 yellow ---------- */
 /*
@@ -592,25 +555,3 @@ body:has(input[placeholder*="Where would you like"]) [class*="option_"] [class*=
     }
 }
 
-/* Fallback if Discord renames splash classes */
-#app-mount [class*="content_"]:has(> [class*="spinner"]) > [class*="text_"] {
-    font-size: 0 !important;
-}
-#app-mount [class*="content_"]:has(> [class*="spinner"]) > [class*="text_"] * {
-    display: none !important;
-}
-#app-mount [class*="content_"]:has(> [class*="spinner"]) > [class*="text_"]::before {
-    content: 'NETWATCH // INCOMING';
-    display: block;
-    font-size: 12px;
-    letter-spacing: 0.28em;
-    color: #39c4b6 !important;
-    margin-bottom: 10px;
-}
-#app-mount [class*="content_"]:has(> [class*="spinner"]) > [class*="text_"]::after {
-    content: 'WAKE THE FUCK UP, SAMURAI';
-    display: block;
-    font-size: 18px;
-    letter-spacing: 0.08em;
-    color: #F3E600 !important;
-}
