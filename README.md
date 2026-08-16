@@ -30,8 +30,8 @@ Enable **Night City 24**. Disable older system24 / Private Channel Recolor theme
 ## What’s inside
 
 - Night City black panels (`#000000`)
-- Cyan icons / panel borders (`#55ead4`), yellow labels / category / icon hover (`#f3e600`)
-- Neon red for links, mentions, unread/jump highlights, brand focus (`#c5003c` / `#880425`)
+- Cyan icons (`#55ead4`); yellow for labels, unfocused chrome, muted text (`#f3e600`)
+- Neon red for links, mentions, unread/jump, brand focus only (`#c5003c`)
 - Equibop UI fixes (header gap, labels, Quick Switcher, …)
 - Private-channel lock recolor
 - Custom splash: **NIGHTCITY** ASCII + *WAKE THE FUCK UP, SAMURAI*

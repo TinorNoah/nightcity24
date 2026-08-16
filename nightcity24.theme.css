@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.1.2
+ * @version 3.1.3
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
@@ -88,29 +88,30 @@ body {
     --text-1: hsl(227, 68%, 95%); /* bright text on colored elements */
     --text-2: #cad3f5; /* headings and important text */
     --text-3: #b8c0e0; /* normal text */
-    --text-4: #a5adce; /* Equibop: clearer icon / muted UI text */
-    --text-5: #8087a2; /* Equibop: muted channels/chats and timestamps */
+    /* muted / unfocused text → warm yellow-gray */
+    --text-4: #c4bc6a;
+    --text-5: #8a8440;
 
     /* background — pure black */
     --bg-1: #1E1E1E; /* dark buttons when clicked */
     --bg-2: #141414; /* dark buttons */
     --bg-3: #0A0A0A; /* spacing, secondary elements */
     --bg-4: #000000; /* main background color */
-    /* chrome washes — soft cyan for panels; red reserved for highlights below */
-    --hover: rgba(85, 234, 212, 0.08);
-    --active: rgba(197, 0, 60, 0.14); /* selected / active → red */
-    --active-2: rgba(197, 0, 60, 0.24);
-    --message-hover: rgba(197, 0, 60, 0.08); /* message hover highlight */
+    /* washes: yellow for idle/unfocused chrome; red only on true highlights */
+    --hover: rgba(243, 230, 0, 0.07); /* unfocused panel / row hover */
+    --active: rgba(243, 230, 0, 0.12); /* selected but ambient */
+    --active-2: rgba(243, 230, 0, 0.20);
+    --message-hover: rgba(243, 230, 0, 0.06); /* idle message hover — not red */
 
-    /* accents: red links/highlights · yellow mid · cyan borders */
+    /* accents: red = focused highlights/links · yellow = ambient · cyan = borders */
     --accent-1: var(--red-2); /* links */
-    --accent-2: var(--red-2); /* mentions / small highlights */
-    --accent-3: var(--blue-3); /* panel hover border stays cyan */
-    --accent-4: var(--blue-4);
-    --accent-5: var(--blue-5);
+    --accent-2: var(--red-2); /* mentions / jump highlights */
+    --accent-3: var(--yellow-3); /* unfocused accent chrome */
+    --accent-4: var(--yellow-4);
+    --accent-5: var(--yellow-5);
     --accent-new: var(--red-3); /* mute/deafen */
-    --mention: linear-gradient(to right, color-mix(in hsl, var(--red-2), transparent 88%) 40%, transparent);
-    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--red-2), transparent 94%) 40%, transparent);
+    --mention: linear-gradient(to right, color-mix(in hsl, var(--red-2), transparent 90%) 40%, transparent);
+    --mention-hover: linear-gradient(to right, color-mix(in hsl, var(--red-2), transparent 95%) 40%, transparent);
 
     /* status */
     --online: #55ead4;
@@ -119,9 +120,9 @@ body {
     --streaming: var(--purple-2);
     --offline: var(--text-4);
 
-    /* borders — cyan chrome, not red */
+    /* borders — yellow idle, cyan on strong hover */
     --border-light: var(--hover);
-    --border: var(--active);
+    --border: rgba(243, 230, 0, 0.22); /* unfocused panel outline */
     --border-hover: var(--blue-3);
     --button-border: hsl(230, 0%, 100%, 0.1);
 
@@ -207,19 +208,23 @@ body {
     --background-message-highlight: rgba(197, 0, 60, 0.18) !important;
     --background-message-highlight-hover: rgba(197, 0, 60, 0.28) !important;
 
-    /* Icons → cyan idle, yellow hover (chrome stays balanced) */
+    /* Icons → cyan focused chrome; yellow for muted / unfocused */
     --icon-default: #55ead4 !important;
     --icon-primary: #55ead4 !important;
     --icon-secondary: #55ead4 !important;
-    --icon-tertiary: #2bb8a6 !important;
-    --icon-muted: #2bb8a6 !important;
+    --icon-tertiary: #c9bf00 !important;
+    --icon-muted: #9e9600 !important;
     --icon-subtle: #55ead4 !important;
     --interactive-normal: #55ead4 !important;
     --interactive-hover: #f3e600 !important;
     --interactive-active: #f3e600 !important;
-    --interactive-muted: #2bb8a6 !important;
+    --interactive-muted: #9e9600 !important;
     --interactive-icon-default: #55ead4 !important;
     --interactive-icon-hover: #f3e600 !important;
+
+    /* Unfocused channel names / muted list text */
+    --channels-default: #c4bc6a !important;
+    --text-muted: #8a8440 !important;
 }
 
 /* ---------- Home / DMs: terminal glyph (system24 custom-dms unimplemented) ---------- */
@@ -293,10 +298,10 @@ body {
 [class*="headerBar"] {
     --icon-default: #55ead4;
     --icon-subtle: #55ead4;
-    --icon-muted: #2bb8a6;
+    --icon-muted: #9e9600;
     --interactive-icon-default: #55ead4;
     --interactive-icon-hover: #f3e600;
-    --interactive-muted: #2bb8a6;
+    --interactive-muted: #9e9600;
     --interactive-text-default: var(--text-3);
     --text-muted: var(--text-4);
     overflow: visible !important;
