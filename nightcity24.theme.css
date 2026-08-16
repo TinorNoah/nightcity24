@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.1.7
+ * @version 3.1.8
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
@@ -670,6 +670,35 @@ body {
 #app-mount [class*="sidebarList"] [aria-expanded]:not(a) [class*="icon"] svg {
     color: #fcee0a !important;
     fill: #fcee0a !important;
+}
+
+/* ---------- Unread channels (distinct from grey read names) ---------- */
+/* Cyan name + red unread rail so unreads pop without looking like categories. */
+#app-mount [class*="sidebarList"] [class*="modeUnread"],
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] {
+    color: #55ead4 !important;
+}
+
+#app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="name"],
+#app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="overflow"],
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="name"],
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="overflow"] {
+    color: #55ead4 !important;
+    -webkit-text-fill-color: #55ead4 !important;
+    font-weight: 600 !important;
+}
+
+#app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="icon"] svg,
+#app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="icon"] svg {
+    color: #55ead4 !important;
+    fill: #55ead4 !important;
+}
+
+/* Left unread bar / pill on the channel row */
+#app-mount [class*="sidebarList"] [class*="unread"]:not([class*="Mentions"]):not([class*="Bottom"]):not([class*="Top"]),
+#app-mount [class*="sidebarList"] span[class*="unread"] {
+    background: #c5003c !important;
+    background-color: #c5003c !important;
 }
 
 /* ---------- Private channel lock recolor (from KrstlSkll69/vc-snippets, adapted) ---------- */
