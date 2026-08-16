@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.1.4
+ * @version 3.1.5
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Paste the raw link or drop into Themes and jack in.
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/refact0r/system24
@@ -261,7 +261,27 @@ body {
     background-color: var(--dms-icon-color-after);
 }
 
-/* Unread divider + NEW messages bar → neon red highlight */
+/* Message dividers: red line; date text cyan; NEW/unread label stays red */
+#app-mount [class*="divider"] {
+    border-color: #c5003c !important;
+    color: #c5003c !important;
+}
+
+#app-mount [class*="divider"]::before,
+#app-mount [class*="divider"]::after {
+    background: #c5003c !important;
+    background-color: #c5003c !important;
+    border-color: #c5003c !important;
+}
+
+/* Date chip in the middle of a normal day divider */
+#app-mount [class*="divider"]:not([class*="isUnread"]) > [class*="content"],
+#app-mount [class*="divider"]:not([class*="isUnread"]) [class*="content"] {
+    color: #55ead4 !important;
+    -webkit-text-fill-color: #55ead4 !important;
+}
+
+/* Unread / NEW bar + label → neon red highlight */
 #app-mount [class*="unreadPill"],
 #app-mount [class*="newMessagesBar"],
 #app-mount [class*="bar__"][class*="newMessages"] {
@@ -269,9 +289,16 @@ body {
     color: #ffffff !important;
 }
 
+#app-mount [class*="divider"][class*="isUnread"],
+#app-mount [class*="unread"][class*="divider"] {
+    border-color: #c5003c !important;
+    color: #c5003c !important;
+}
+
 #app-mount [class*="divider"][class*="isUnread"] [class*="content"],
 #app-mount [class*="unread"][class*="divider"] [class*="content"] {
     color: #c5003c !important;
+    -webkit-text-fill-color: #c5003c !important;
 }
 
 /* Jump-to / highlighted message left edge → red */
