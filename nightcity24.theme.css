@@ -1,7 +1,7 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.2.2
+ * @version 3.2.4
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Use as the only enabled theme (do not stack Midnight).
  * @source https://github.com/TinorNoah/nightcity24
  * @website https://github.com/TinorNoah/nightcity24
@@ -248,8 +248,7 @@ body {
     -webkit-text-fill-color: #fcee0a !important;
 }
 
-#app-mount [class*='privateChannels'] [class*='lastMessageTimestamp'],
-#app-mount [class*='privateChannels'] time {
+#app-mount [class*='privateChannels'] [class*='lastMessageTimestamp'] {
     color: #55ead4 !important;
 }
 
@@ -288,14 +287,12 @@ body {
 }
 
 /* Message dividers (chat only — not every Discord "divider") */
-#app-mount ol[data-list-id='chat-messages'] [class*='divider'],
-#app-mount [class*='scrollerInner'] > [class*='divider'] {
+#app-mount ol[data-list-id='chat-messages'] [class*='divider'] {
     border-color: #c5003c !important;
     color: #c5003c !important;
 }
 
-#app-mount ol[data-list-id='chat-messages'] [class*='divider']:not([class*='isUnread']) [class*='content'],
-#app-mount [class*='scrollerInner'] > [class*='divider']:not([class*='isUnread']) [class*='content'] {
+#app-mount ol[data-list-id='chat-messages'] [class*='divider']:not([class*='isUnread']) [class*='content'] {
     color: #55ead4 !important;
     -webkit-text-fill-color: #55ead4 !important;
 }
@@ -338,8 +335,8 @@ body {
 
 /* ---------- Channel / VC header ---------- */
 
-[class*="subtitleContainer"],
-[class*="headerBar"] {
+#app-mount [class*="subtitleContainer"],
+#app-mount [class*="headerBar"] {
     --icon-default: #55ead4;
     --icon-subtle: #55ead4;
     --icon-muted: #8087a2;
@@ -352,31 +349,31 @@ body {
 }
 
 /* Drop reserved right padding on toolbars / search */
-[class*="subtitleContainer"] [class*="toolbar"],
-[class*="headerBar"] [class*="toolbar"],
-[class*="navBarContent"],
-[class*="headerBarContent"] {
+#app-mount [class*="subtitleContainer"] [class*="toolbar"],
+#app-mount [class*="headerBar"] [class*="toolbar"],
+#app-mount [class*="navBarContent"],
+#app-mount [class*="headerBarContent"] {
     padding-right: 0 !important;
     margin-right: 0 !important;
 }
 
-[class*="searchFloating"] {
+#app-mount [class*="searchFloating"] {
     right: var(--gap, 12px) !important;
 }
 
 /* Let the channel title use leftover width */
-[class*="subtitleContainer"] [class*="children"],
-[class*="headerBar"] [class*="children"] {
+#app-mount [class*="subtitleContainer"] [class*="children"],
+#app-mount [class*="headerBar"] [class*="children"] {
     flex: 1 1 auto !important;
     min-width: 0 !important;
     max-width: none !important;
     overflow: hidden;
 }
 
-[class*="subtitleContainer"] [class*="title"],
-[class*="headerBar"] [class*="title"],
-[class*="subtitleContainer"] h1,
-[class*="headerBar"] h1 {
+#app-mount [class*="subtitleContainer"] [class*="title"],
+#app-mount [class*="headerBar"] [class*="title"],
+#app-mount [class*="subtitleContainer"] h1,
+#app-mount [class*="headerBar"] h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -384,33 +381,33 @@ body {
 }
 
 /* VC header forced to 46px by system24 — allow breathing room */
-[class*="headerBar"][class*="container"] {
+#app-mount [class*="headerBar"][class*="container"] {
     height: auto !important;
     min-height: 48px !important;
 }
 
-[class*="subtitleContainer"] [class*="search"] input,
-[class*="headerBar"] [class*="search"] input,
-[class*="subtitleContainer"] input[placeholder*="Search"],
-[class*="headerBar"] input[placeholder*="Search"] {
+#app-mount [class*="subtitleContainer"] [class*="search"] input,
+#app-mount [class*="headerBar"] [class*="search"] input,
+#app-mount [class*="subtitleContainer"] input[placeholder*="Search"],
+#app-mount [class*="headerBar"] input[placeholder*="Search"] {
     color: var(--text-3) !important;
     background-color: var(--bg-2) !important;
 }
 
-[class*="subtitleContainer"] input::placeholder,
-[class*="headerBar"] input::placeholder {
+#app-mount [class*="subtitleContainer"] input::placeholder,
+#app-mount [class*="headerBar"] input::placeholder {
     color: var(--text-4) !important;
     opacity: 1 !important;
 }
 
-[class*="trailing_"] {
+#app-mount [class*="trailing_"] {
     --icon-default: #55ead4;
     --icon-subtle: #55ead4;
     --interactive-icon-default: #55ead4;
     opacity: 1 !important;
 }
 
-[class*="trailing_"] svg {
+#app-mount [class*="trailing_"] svg {
     color: #55ead4 !important;
     opacity: 1 !important;
     fill: #55ead4 !important;
@@ -418,16 +415,16 @@ body {
 
 /* ---------- Panel labels ---------- */
 /* Keep labels readable without unlocking overflow on scrollers */
-[class*="subtitleContainer"]::after,
-[class*="callContainer"]::after,
-[class*="sidebarList"]::after,
-[class*="guilds_"]::after,
-[class*="panels_"]::after,
-[class*="messagesWrapper"]::after,
-[class*="channelTextArea"]::after,
-[class*="membersWrap"]::after,
-[class*="peopleColumn"]::after,
-[class*="nowPlayingColumn"]::after {
+#app-mount [class*="subtitleContainer"]::after,
+#app-mount [class*="callContainer"]::after,
+#app-mount [class*="sidebarList"]::after,
+#app-mount [class*="guilds_"]::after,
+#app-mount [class*="panels_"]::after,
+#app-mount [class*="messagesWrapper"]::after,
+#app-mount [class*="channelTextArea"]::after,
+#app-mount [class*="membersWrap"]::after,
+#app-mount [class*="peopleColumn"]::after,
+#app-mount [class*="nowPlayingColumn"]::after {
     top: -11px !important;
     line-height: 1 !important;
     font-size: 13px !important;
@@ -435,21 +432,30 @@ body {
     pointer-events: none;
 }
 
-/* Friends page: titlebar "friends" label was clipped at the top */
-#app-mount [class*="tabBody"],
-#app-mount [class*="container"]:has(> [class*="peopleColumn"]) {
+/* Friends page: the "friends" ::after lives on the titlebar, not peopleColumn.
+   Discord clips it with overflow:hidden on that bar. */
+#app-mount [class*="container"]:has(> [class*="tabBody"]) {
     overflow: visible !important;
+    padding-top: 14px !important;
+    box-sizing: border-box !important;
 }
 
-#app-mount [class*="container"]:has(> [class*="peopleColumn"]) > [class*="container"] {
+#app-mount [class*="container"]:has(> [class*="tabBody"]) > [class*="container"] {
     overflow: visible !important;
     position: relative !important;
-    margin-top: 12px !important;
+}
+
+#app-mount [class*="container"]:has(> [class*="tabBody"]) > [class*="container"]::after {
+    top: -12px !important;
+    line-height: 1 !important;
+    font-size: 13px !important;
+    z-index: 20 !important;
+    pointer-events: none;
 }
 
 /* Thread chrome: allow label to paint outside without breaking chat.
    callContainer keeps overflow:hidden below so streams don't clip. */
-[class*="chatLayerWrapper"] {
+#app-mount [class*="chatLayerWrapper"] {
     overflow: visible !important;
 }
 
@@ -492,7 +498,7 @@ body {
   Never set height:auto on rows (virtualized list).
   Force Discord UI font — DM Mono makes path/name fragments overlap.
 */
-[class*="quickswitcher"] {
+#app-mount [class*="quickswitcher"] {
     --vc-qs-font: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     --font-primary: var(--vc-qs-font) !important;
     --font-display: var(--vc-qs-font) !important;
@@ -501,15 +507,15 @@ body {
     letter-spacing: normal !important;
 }
 
-[class*="quickswitcher"] input {
+#app-mount [class*="quickswitcher"] input {
     width: 100% !important;
     box-sizing: border-box !important;
     font-family: var(--vc-qs-font) !important;
 }
 
 /* Result row: keep as a single horizontal flex line */
-[class*="quickswitcher"] [role="option"],
-[class*="quickswitcher"] [class*="option_"] {
+#app-mount [class*="quickswitcher"] [role="option"],
+#app-mount [class*="quickswitcher"] [class*="option_"] {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
@@ -517,8 +523,8 @@ body {
     font-family: var(--vc-qs-font) !important;
 }
 
-[class*="quickswitcher"] [role="option"] > div,
-[class*="quickswitcher"] [class*="option_"] > div {
+#app-mount [class*="quickswitcher"] [role="option"] > div,
+#app-mount [class*="quickswitcher"] [class*="option_"] > div {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
@@ -530,12 +536,12 @@ body {
 }
 
 /* Name / path block — static flow, ellipsis instead of stacked absolutes */
-[class*="quickswitcher"] [role="option"] [class*="content"],
-[class*="quickswitcher"] [role="option"] [class*="name"],
-[class*="quickswitcher"] [class*="option_"] [class*="content"],
-[class*="quickswitcher"] [class*="option_"] [class*="name"],
-[class*="quickswitcher"] [class*="contentDefault"],
-[class*="quickswitcher"] [class*="contentFocused"] {
+#app-mount [class*="quickswitcher"] [role="option"] [class*="content"],
+#app-mount [class*="quickswitcher"] [role="option"] [class*="name"],
+#app-mount [class*="quickswitcher"] [class*="option_"] [class*="content"],
+#app-mount [class*="quickswitcher"] [class*="option_"] [class*="name"],
+#app-mount [class*="quickswitcher"] [class*="contentDefault"],
+#app-mount [class*="quickswitcher"] [class*="contentFocused"] {
     flex: 1 1 auto !important;
     min-width: 0 !important;
     max-width: 100% !important;
@@ -549,8 +555,8 @@ body {
 }
 
 /* Guild / misc label on the right */
-[class*="quickswitcher"] [role="option"] [class*="misc"],
-[class*="quickswitcher"] [class*="option_"] [class*="misc"] {
+#app-mount [class*="quickswitcher"] [role="option"] [class*="misc"],
+#app-mount [class*="quickswitcher"] [class*="option_"] [class*="misc"] {
     flex: 0 1 auto !important;
     max-width: 35% !important;
     margin-left: auto !important;
@@ -561,20 +567,20 @@ body {
 }
 
 /* ---------- ChannelTabs / Holy Notes ---------- */
-.vc-channeltabs-bookmark-placeholder-text {
+#app-mount .vc-channeltabs-bookmark-placeholder-text {
     color: var(--text-4) !important;
 }
 
-.vc-channeltabs-bookmark-star {
+#app-mount .vc-channeltabs-bookmark-star {
     stroke: #55ead4 !important;
 }
 
-.vc-channeltabs-bookmark-search-button {
+#app-mount .vc-channeltabs-bookmark-search-button {
     color: #55ead4 !important;
 }
 
-.vc-note-button,
-.vc-note-button svg {
+#app-mount .vc-note-button,
+#app-mount .vc-note-button svg {
     color: #55ead4 !important;
     opacity: 1 !important;
     fill: #55ead4 !important;
@@ -618,7 +624,6 @@ body {
 #app-mount [class*="sidebarList"] [class*="modeUnreadImportant"] [class*="overflow"] {
     color: #c5003c !important;
     -webkit-text-fill-color: #c5003c !important;
-    font-weight: 600 !important;
 }
 
 #app-mount [class*="sidebarList"] [class*="modeUnread"] [class*="icon"] svg,
@@ -634,27 +639,27 @@ body {
 /* ---------- Private channel lock recolor (from KrstlSkll69/vc-snippets, adapted) ---------- */
 /* Use Cyberpunk yellow so private locks stay visible on black. */
 
-[class^=icon] path[d^="M16 4h.5v"] {
+#app-mount [class^=icon] path[d^="M16 4h.5v"] {
     fill: #fcee0a !important;
 }
 
-[class^=icon] path[d^="M16.5 18H16a1"] {
+#app-mount [class^=icon] path[d^="M16.5 18H16a1"] {
     fill: #fcee0a !important;
 }
 
-[class^=icon] path[d^="M16 18h.5v"] {
+#app-mount [class^=icon] path[d^="M16 18h.5v"] {
     fill: #fcee0a !important;
 }
 
-[class^=searchResultChannelIcon] path[d^="M16 4h.5v-.5a2.5 2.5 0 0 1 5"] {
+#app-mount [class^=searchResultChannelIcon] path[d^="M16 4h.5v-.5a2.5 2.5 0 0 1 5"] {
     fill: #fcee0a !important;
 }
 
-[class^=searchResultChannelIcon] path[d^="M16.5 18H16a1 1 0 0 0-1"] {
+#app-mount [class^=searchResultChannelIcon] path[d^="M16.5 18H16a1 1 0 0 0-1"] {
     fill: #fcee0a !important;
 }
 
-.vc-uvs-speaker path[d^="M16 4h.5v"] {
+#app-mount .vc-uvs-speaker path[d^="M16 4h.5v"] {
     fill: #fcee0a !important;
 }
 
