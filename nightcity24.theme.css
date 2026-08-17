@@ -1,11 +1,11 @@
 /**
  * @name Night City 24
  * @author TinorNoah
- * @version 3.2.0
+ * @version 3.2.2
  * @description Wake the fuck up, samurai. Black chrome TUI for Equibop — cyan, yellow, and neon red. Built on refact0r/system24. Use as the only enabled theme (do not stack Midnight).
-
  * @source https://github.com/TinorNoah/nightcity24
- * @website https://github.com/refact0r/system24
+ * @website https://github.com/TinorNoah/nightcity24
+ * @authorLink https://github.com/TinorNoah
 */
 
 /* import theme modules */
@@ -433,6 +433,18 @@ body {
     font-size: 13px !important;
     z-index: 5 !important;
     pointer-events: none;
+}
+
+/* Friends page: titlebar "friends" label was clipped at the top */
+#app-mount [class*="tabBody"],
+#app-mount [class*="container"]:has(> [class*="peopleColumn"]) {
+    overflow: visible !important;
+}
+
+#app-mount [class*="container"]:has(> [class*="peopleColumn"]) > [class*="container"] {
+    overflow: visible !important;
+    position: relative !important;
+    margin-top: 12px !important;
 }
 
 /* Thread chrome: allow label to paint outside without breaking chat.

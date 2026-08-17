@@ -2,7 +2,9 @@
 
 Wake the fuck up, samurai. Black chrome TUI for **Equibop / Equicord / Vencord** — Night City black, cyan `#55ead4`, neon yellow `#fcee0a`, neon red `#c5003c`.
 
-One CSS file. Paste a link or drop it in Themes. No scripts, no builds, no other packages. Built on [refact0r/system24](https://github.com/refact0r/system24).
+One CSS file. Paste a link or drop it in Themes. No scripts, no builds, no other packages.
+
+Repo: [TinorNoah/nightcity24](https://github.com/TinorNoah/nightcity24). Built on [refact0r/system24](https://github.com/refact0r/system24).
 
 ## Install (link)
 
