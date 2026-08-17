@@ -6,6 +6,16 @@ One CSS file. Paste a link or drop it in Themes. No scripts, no builds, no other
 
 Repo: [TinorNoah/nightcity24](https://github.com/TinorNoah/nightcity24). Built on [refact0r/system24](https://github.com/refact0r/system24).
 
+## Preview
+
+![Splash](screenshots/splash.png)
+
+![Friends home](screenshots/home.png)
+
+![Voice & Video settings](screenshots/settings.png)
+
+![Add account](screenshots/login.png)
+
 ## Install (link)
 
 Settings → Themes → Online Themes / Theme Links → paste:
