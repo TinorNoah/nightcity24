@@ -14,8 +14,9 @@ One CSS file. Paste a link or drop it in Themes. No scripts, no builds, no extra
 [![Vencord](https://img.shields.io/badge/Vencord-c5003c?style=flat-square&labelColor=000000)](https://vencord.dev/)
 [![stars](https://img.shields.io/github/stars/TinorNoah/nightcity24?style=flat-square&color=fcee0a&labelColor=000000)](https://github.com/TinorNoah/nightcity24/stargazers)
 [![last commit](https://img.shields.io/github/last-commit/TinorNoah/nightcity24?style=flat-square&color=55ead4&labelColor=000000)](https://github.com/TinorNoah/nightcity24/commits/main)
+[![Discord](https://img.shields.io/badge/Discord-feedback-5865F2?style=flat-square&labelColor=000000&logo=discord&logoColor=55ead4)](https://discord.gg/ukdfjvYsKa)
 
-[Preview](#preview) · [Install](#install) · [Palette](#palette) · [Features](#whats-inside) · [FAQ](#faq) · [Credits](#credits)
+[Preview](#preview) · [Install](#install) · [Palette](#palette) · [Features](#whats-inside) · [Feedback](#feedback) · [FAQ](#faq) · [Credits](#credits)
 
 </div>
 
@@ -32,6 +33,7 @@ https://raw.githubusercontent.com/TinorNoah/nightcity24/main/nightcity24.theme.c
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/TinorNoah/nightcity24/main/nightcity24.theme.css"><img src="https://img.shields.io/badge/Download-nightcity24.theme.css-fcee0a?style=for-the-badge&labelColor=000000&logo=css3&logoColor=55ead4" alt="Download nightcity24.theme.css"></a>
+  <a href="https://discord.gg/ukdfjvYsKa"><img src="https://img.shields.io/badge/Discord-leave_feedback-5865F2?style=for-the-badge&labelColor=000000&logo=discord&logoColor=55ead4" alt="Leave feedback on Discord"></a>
   <a href="https://github.com/TinorNoah/nightcity24/stargazers"><img src="https://img.shields.io/badge/Star-this_repo-c5003c?style=for-the-badge&labelColor=000000" alt="Star this repo"></a>
 </p>
 
@@ -143,6 +145,20 @@ Open `nightcity24.theme.css` and edit the variables at the top. Common knobs:
 
 Keep Night City as the only enabled theme after you edit. Changes in Quick CSS are unnecessary — bake it in the file.
 
+## Feedback
+
+Bugs, palette nits, Equibop weirdness, feature asks — drop them in Discord.
+
+<p align="center">
+  <a href="https://discord.gg/ukdfjvYsKa"><img src="https://img.shields.io/badge/NETWATCH_//_JOIN-discord.gg%2FukdfjvYsKa-55ead4?style=for-the-badge&labelColor=000000&logo=discord&logoColor=fcee0a" alt="Join Discord — https://discord.gg/ukdfjvYsKa"></a>
+</p>
+
+<div align="center">
+
+`https://discord.gg/ukdfjvYsKa`
+
+</div>
+
 ## FAQ
 
 <details>
@@ -188,7 +204,8 @@ Repo: [TinorNoah/nightcity24](https://github.com/TinorNoah/nightcity24)
 
 `NETWATCH // OUT`
 
-**Star the repo if Night City lives on your client.**
+**Star the repo if Night City lives on your client.**  
+**[Leave feedback on Discord](https://discord.gg/ukdfjvYsKa)** if something breaks or glows wrong.
 
 [↑ back to top](#night-city-24)
 
